@@ -9,9 +9,6 @@ import { Root, Popup } from 'popup-ui';
 import jwt_decode from 'jwt-decode';
 import qs from "qs";
 import useAuth from '../hooks/useAuth';
-import {NavigationActions as navigation} from "react-navigation";
-import {CommonActions} from "@react-navigation/native";
-
 function LoginScreen({navigation}) {
     const ip = "192.168.20.181";
     const portNr = "8081";
@@ -182,7 +179,7 @@ const styles = StyleSheet.create({
         width:"80%",
         backgroundColor:"#fff",
         borderRadius:25,
-        borderColor:"Z",
+        borderColor:"#fff",
         borderWidth:2,
         height:50,
         marginBottom:20,

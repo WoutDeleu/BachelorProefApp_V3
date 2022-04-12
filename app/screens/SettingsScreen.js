@@ -1,7 +1,6 @@
 import {Button, Text, View, StyleSheet, TouchableOpacity} from "react-native";
 import * as SecureStore from "expo-secure-store";
 import React from "react";
-import Swiper from 'react-native-swiper'
 import * as Updates from "expo-updates";
 
 function SettingsScreen() {

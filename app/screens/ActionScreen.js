@@ -1,8 +1,6 @@
 import { Button, Text, View, StyleSheet, TouchableOpacity } from "react-native";
-import SelectDropdown from 'react-native-select-dropdown'
 import * as SecureStore from "expo-secure-store";
 import React, {useState} from "react";
-import jwt_decode from 'jwt-decode';
 
 function ActionScreen({navigation}) {
     async function logOut() {

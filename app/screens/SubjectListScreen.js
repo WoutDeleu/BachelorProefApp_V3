@@ -1,7 +1,6 @@
 import {Button, Text, View, StyleSheet, Contai, TouchableOpacity} from "react-native";
 import * as SecureStore from "expo-secure-store";
 import React, {Component, useState} from "react";
-import Swiper from 'react-native-swiper'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Icon from 'react-native-vector-icons'
 import axios from "axios";
@@ -129,14 +128,14 @@ class SubjectListScreen extends Component {
     }
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1
-    },
-    view: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-    }
-})
+// const styles = StyleSheet.create({
+//     container: {
+//         flex: 1
+//     },
+//     view: {
+//         flex: 1,
+//         justifyContent: 'center',
+//         alignItems: 'center',
+//     }
+// })
 export default SubjectListScreen;
