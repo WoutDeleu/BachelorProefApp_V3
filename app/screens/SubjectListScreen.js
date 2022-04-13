@@ -11,64 +11,80 @@ import axios from "axios";
 const ip = "192.168.20.181";
 const portNr = "8081"
 
-class SubjectListScreen extends Component {
-    state = {
-        subjects: [],
-        details: [],
-        hasLoaded: false
-    }
+function  SubjectListScreen({navigation}) {
+    const [subjects, setSubjects] = useState([]);
+    const [details, setDetails] = useState([]);
+    const [hasLoaded, setHasloaded] = useState(false);
 
-    async getToken() {
+    const getToken = async () => {
         try {
+            console.log("function getToken");
             let token = await SecureStore.getItemAsync('access_token');
-            this.setState({hasLoaded: true});
-            //console.log("done");
+            setHasloaded(true);
+            console.log("done");
+            return token;
         } catch (e) {
             console.log(e.message);
         }
     }
 
-    constructor(props) {
-        super(props);
-        while(this.state.hasLoaded) {
+    React.useEffect(()=> {
+        const constructor = async () => {
+            let token = await getToken();
+            //console.log(token);
             let axios = require('axios');
-            const token = JSON.stringify(this.getToken());
-            let config = {
+            //console.log(token);
+            token = token.slice(1);
+            token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0b255LndhdXRlcnNAa3VsZXV2ZW4uYmUiLCJyb2xlcyI6WyJST0xFX0NPT1JESU5BVE9SIiwiUk9MRV9QUk9NT1RPUiJdLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODEvYXV0aGVudGljYXRpb24vbG9naW4iLCJleHAiOjE2NDk4NzEyMTJ9.RfmtahulXbiOItftuzpe2xpnVtlI7_OJoYbOC7V0Z0s"
+            console.log('Bearer ' + token)
+
+            // let config = {
+            //     method: 'get',
+            //     url: 'http://' + ip + '/' + portNr + '/subjectManagement/subjects',
+            //     headers: {
+            //         'Authorization': 'Bearer ' + token
+            //     }
+            // };
+
+            var config = {
                 method: 'get',
-                url: 'http://' + ip + '/' + portNr + '/subjectManagement/subjects',
+                url: 'http://192.168.20.181:8081/subjectManagement/subjects',
                 headers: {
-                    'Authorization': 'Bearer ' + token
+                    'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0b255LndhdXRlcnNAa3VsZXV2ZW4uYmUiLCJyb2xlcyI6WyJST0xFX0NPT1JESU5BVE9SIiwiUk9MRV9QUk9NT1RPUiJdLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODEvYXV0aGVudGljYXRpb24vbG9naW4iLCJleHAiOjE2NDk4NzEyMTJ9.RfmtahulXbiOItftuzpe2xpnVtlI7_OJoYbOC7V0Z0s'
                 }
             };
+
+
+            console.log("test");
             let self = this;
             axios(config)
                 .then(function (res) {
-                    self.setState({subjects: res.data});
+                    setSubjects(res.data);
                     console.log(res.data);
                 }).catch(function (error) {
             });
         }
-    }
+        constructor();
+    },[])
 
 
-
-    renderDetails =(subject)=>{
+    const renderDetails =(subject)=>{
         return(
             <>
                 <Button title="tada" onClick={() => {
-                    let details = [...this.state.details];
+                    let details = [...details];
                     let detail = details[subject.id-1];
                     detail = !detail;
                     details[subject.id-1] = detail;
-                    this.setState({details});
+                    setDetails(details);
                 }
                 }
                         aria-controls={"subjectDescription"}
-                        aria-expended={this.state.details[subject.id-1]}
+                        aria-expended={setDetails([subject.id-1])}
                 >
                     Details
                 </Button>
-                <View in={this.state.details[subject.id-1]}>
+                <View in={setDetails([subject.id-1])}>
                     <View id={"subjectDescription"}>
                         {subject.description}
                     </View>
@@ -77,52 +93,48 @@ class SubjectListScreen extends Component {
         )
     }
 
-    renderSubject = (subject) => {
+    const renderSubject = (subject) => {
         return(
             <View>
                 <View>
                     <View >Students: {subject.nrOfStudents}</View>
                     <View>
                         <View>{subject.name}</View>
-                        {this.renderDetails(subject)}
+                        {renderDetails(subject)}
                     </View>
                 </View>
             </View>
         )
     }
-
-    render(){
-        return(
-            <View>
-                <View style={{
-                    flex: 1,
-                    justifyContent: "center",
-                    alignItems: "center",
-                    backgroundColor: "#ffc2c2",
+    return(
+        <View>
+            <View style={{
+                flex: 1,
+                justifyContent: "center",
+                alignItems: "center",
+                backgroundColor: "#ffc2c2",
+                }}
+            >
+                <TouchableOpacity
+                    style={{
+                        borderWidth:1,
+                        borderColor:'rgba(0,0,0,0.2)',
+                        position: 'absolute',
+                        top:580,
+                        alignItems:'center',
+                        justifyContent:'center',
+                        width:40,
+                        height:40,
+                        backgroundColor:'#212521',
+                        borderRadius:50,
                     }}
                 >
-                    <TouchableOpacity
-                        style={{
-                            borderWidth:1,
-                            borderColor:'rgba(0,0,0,0.2)',
-                            position: 'absolute',
-                            top:580,
-                            alignItems:'center',
-                            justifyContent:'center',
-                            width:40,
-                            height:40,
-                            backgroundColor:'#212521',
-                            borderRadius:50,
-
-                        }}
-                    >
-                        <Ionicons name="add-outline" size={30} color="#ffff"/>
-                    </TouchableOpacity>
-                </View>
-                {this.state.subjects.map(this.renderSubject)}
+                    <Ionicons name="add-outline" size={30} color="#ffff"/>
+                </TouchableOpacity>
             </View>
-        );
-    }
+            {subjects.map(renderSubject)}
+        </View>
+    )
 }
 
 const styles = StyleSheet.create({
