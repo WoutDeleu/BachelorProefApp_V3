@@ -1,68 +1,93 @@
-import {Button, Text, View, StyleSheet, Contai, TouchableOpacity} from "react-native";
+import {
+    Button,
+    Text,
+    View,
+    StyleSheet,
+    TouchableOpacity,
+    FlatList,
+    SafeAreaView,
+    StatusBar,
+    ScrollView,
+} from "react-native";
 import * as SecureStore from "expo-secure-store";
 import React, {Component, useState} from "react";
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Icon from 'react-native-vector-icons'
 import axios from "axios";
 import TextAncestorContext from "react-native-web/dist/exports/Text/TextAncestorContext";
-import {ScrollView} from "react-native";
 import Colors from "react-native/Libraries/NewAppScreen/components/Colors";
 import ReadMore from 'react-native-read-more-text';
 
-
-
-
-
-const ip = "192.168.20.181";
+const ipKot = "192.168.20.181";
+const ipCamp = "192.168.163.1";
 const portNr = "8081"
 
 function  SubjectListScreen({navigation}) {
     const [subjects, setSubjects] = useState([]);
     const [details, setDetails] = useState([]);
-    // const [hasLoaded, setHasloaded] = useState(false);
+    const [hasLoaded, setHasloaded] = useState(false);
 
     const getToken = async () => {
         try {
-            console.log("function getToken");
+            // console.log("function getToken");
             let token = await SecureStore.getItemAsync('access_token');
-            // setHasloaded(true);
-            console.log("done");
+            // console.log("done");
             return token;
         } catch (e) {
             console.log(e.message);
         }
     }
+    const refreshToken = async () => {
+        const t = await SecureStore.getItemAsync("access_token")
+        const time = await SecureStore.getItemAsync("access_token_expired")
+        // console.log(t);
+        // console.log(time);
+
+        let expTime_at = await SecureStore.getItemAsync('access_token_expired');
+        let expTime_rt = await SecureStore.getItemAsync('refresh_token_expired');
+        let curTime = new Date().getTime();
+        const url_refresh = "http://" + ipKot + ":" + portNr + "/authentication/token/refresh";
+
+        if(expTime_at>curTime) { }
+        else {
+            if(expTime_rt>curTime) {
+                let config = {
+                    method: 'get',
+                    url: url_refresh,
+                    headers:{
+                        'Authorization': 'Bearer ' + JSON.parse(await SecureStore.getItemAsync("refresh_token"))
+                    }
+                }
+                axios(config).then(function(res){
+                    SecureStore.setItemAsync("access_token", JSON.stringify(res.data.access_token));
+                    let time = new Date().getTime();//getTime gives the amount of millieseconds that have passed since January 1st 1970
+                    let access_token_expired = new Date(time + 10*60*1000).getTime();
+                    SecureStore.setItemAsync("access_token_expired", JSON.stringify(access_token_expired));
+                    // console.log(res.data.access_token)
+                }).catch(function (error) {
+                });
+            }
+        }
+    }
 
     React.useEffect(()=> {
         const constructor = async () => {
-/*            let token = await getToken();
-            console.log(token);
+            await refreshToken();
+            let token = await getToken();
             let axios = require('axios');
-            console.log('http://' + ip + '/' + portNr + '/subjectManagement/subjects');
-            console.log('Bearer ' + token);
 
             let config = {
                 method: 'get',
-                url: 'http://' + ip + '/' + portNr + '/subjectManagement/subjects',
+                url: 'http://' + ipKot + ':' + portNr + '/subjectManagement/subjects',
                 headers: {
                     'Authorization': 'Bearer ' + JSON.parse(token)
-                }
-            };*/
-            //TODO -> haal token uit securestorage.... en Gebruik die
-
-
-
-            var config = {
-                method: 'get',
-                url: 'http://192.168.20.181:8081/subjectManagement/subjects',
-                headers: {
-                    'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0b255LndhdXRlcnNAa3VsZXV2ZW4uYmUiLCJyb2xlcyI6WyJST0xFX0NPT1JESU5BVE9SIiwiUk9MRV9QUk9NT1RPUiJdLCJpc3MiOiJodHRwOi8vMTkyLjE2OC4yMC4xODE6ODA4MS9hdXRoZW50aWNhdGlvbi90b2tlbi9yZWZyZXNoIiwiZXhwIjoxNjUwMDMzNTU3fQ.e9s8XeqYYLfHiUU_WxZ2BJX_1PMdJp2oCtEHB3uaDVY'
                 }
             };
             axios(config)
                 .then(function (res) {
                     setSubjects(res.data);
-                    console.log(res.data);
+                    setHasloaded(true);
+                    //console.log(res.data);
                 }).catch(function (error) {
             });
         }
@@ -70,9 +95,8 @@ function  SubjectListScreen({navigation}) {
     },[])
 
 
-    const renderSubject = (subject) => {
-        let {descr} = subject.description;
-        console.log(descr);
+    const Subject = ({subject}) => {
+        {console.log(subject.name)}
         return(
             <View style={styles.subjectTotalBlock}>
                 <Text style={styles.students}>
@@ -86,27 +110,25 @@ function  SubjectListScreen({navigation}) {
                     renderTruncatedFooter={_renderTruncatedFooter}
                     renderRevealedFooter={_renderRevealedFooter}
                     onReady={_handleTextReady}>
-                    {/*HIER MOET DESCRIPTION KOMEN*/}
-                    <Text>
-                        In 2017 deed Van der Hoorn een stap hogerop en werd hij prof bij Roompot-Nederlandse Loterij. In zijn eerste jaar als prof won hij de Schaal Sels en werd hij tweede in Dwars door het Hageland en de Tacx Pro Classic. Een jaar later won hij de derde etappe van de BinckBank Tour, een wedstrijd uit de UCI World Tour.
+                    <Text style={styles.shortDescription}>
+                        {subject.description}
                     </Text>
                 </ReadMore>
             </View>
-        )
-    }
+        );
+    };
 
 
     const _renderTruncatedFooter = (handlePress) => {
         return (
-            <Text style={{color: '#ffff', marginTop: 5}} onPress={handlePress}>
+            <Text style={{color: '#0096FF', marginTop: 5}} onPress={handlePress}>
                 Read more
             </Text>
         );
     }
-
     const _renderRevealedFooter = (handlePress) => {
         return (
-            <Text style={{color: '#ffff', marginTop: 5}} onPress={handlePress}>
+            <Text style={{color: '#0096FF', marginTop: 5}} onPress={handlePress}>
                 Show less
             </Text>
         );
@@ -114,6 +136,7 @@ function  SubjectListScreen({navigation}) {
     const _handleTextReady = () => {
         // ...
     }
+    if(!hasLoaded) return null;
 
     return(
         <View style={styles.container}>
@@ -123,8 +146,7 @@ function  SubjectListScreen({navigation}) {
                 justifyContent: "center",
                 alignItems: "center",
                 backgroundColor: "#ffc2c2",
-            }}
-            >
+            }}>
                 <TouchableOpacity
                     style={{
                         borderWidth:1,
@@ -142,10 +164,16 @@ function  SubjectListScreen({navigation}) {
                     <Ionicons name="add-outline" size={30} color="#ffff"/>
                 </TouchableOpacity>
             </View>
-            <View style={{justifyContent: 'center',}}>
-                {subjects.map(renderSubject)}
-            </View>
-
+            <SafeAreaView style={{justifyContent: 'center',}}>
+                <FlatList
+                    style={{flex:1, marginTop: StatusBar.currentHeight || 0,}}
+                    data={subjects}
+                    renderItem={ ({item}) => {
+                        return <Subject subject={item}/>
+                    }}
+                    keyExtractor={ subject => subject.id }
+                />
+            </SafeAreaView>
         </View>
     )
 }
@@ -162,12 +190,16 @@ const styles = StyleSheet.create({
     },
     subjectTotalBlock: {
         backgroundColor: "#212521",
-        width: 250,
-        height: 150,
+        width: 350,
+        height: 'auto',
         borderWidth: 2,
         borderRadius: 9,
         justifyContent: 'center',
-        alignItems:"center"
+        alignItems:"center",
+        alignSelf: 'flex-start',
+        padding: 20,
+        marginVertical: 8,
+        marginHorizontal: 16
     },
     title: {
         color: "#ffff",
@@ -182,7 +214,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',alignItems:"center"
     },
     shortDescription: {
-        color: '#ffff',
+        color: '#C0C0C0',
         justifyContent: 'center',alignItems:"center"
 
     }

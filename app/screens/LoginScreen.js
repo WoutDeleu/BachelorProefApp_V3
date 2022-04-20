@@ -10,7 +10,8 @@ import jwt_decode from 'jwt-decode';
 import qs from "qs";
 import useAuth from '../hooks/useAuth';
 function LoginScreen({navigation}) {
-    const ip = "192.168.20.181";
+    const ipKot = "192.168.20.181";
+    const ipCamp = "192.168.163.1";
     const portNr = "8081";
 
     const win = Dimensions.get('window');
@@ -37,7 +38,7 @@ function LoginScreen({navigation}) {
 
     const logInCheck = async (e) => {
         e.preventDefault();
-        const url_login = "http://" + ip + ":" + portNr + "/authentication/login";
+        const url_login = "http://" + ipKot + ":" + portNr + "/authentication/login";
         const data = qs.stringify({email, password});
         const config = {
             method: 'post',

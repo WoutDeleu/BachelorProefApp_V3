@@ -14,15 +14,15 @@ const AuthStack = () => {
     const [isSignedIn, setSignedIn] = useState();
     const [loading, setLoading] = useState();
 
-    const ip = "192.168.20.181";
+    const ipKot = "192.168.20.181";
     const portNr = "8081";
-    const url_refresh = "http://" + ip + ":" + portNr + "/authentication/token/refresh";
+    const url_refresh = "http://" + ipKot + ":" + portNr + "/authentication/token/refresh";
     React.useEffect(() => {
       const loggedIn = async () => {
         const t = await SecureStore.getItemAsync("access_token")
         const time = await SecureStore.getItemAsync("access_token_expired")
-        console.log(t);
-        console.log(time);
+        // console.log(t);
+        // console.log(time);
 
         let expTime_at = await SecureStore.getItemAsync('access_token_expired');
         let expTime_rt = await SecureStore.getItemAsync('refresh_token_expired');
@@ -33,6 +33,7 @@ const AuthStack = () => {
           if(expTime_at>curTime) {
             setSignedIn(true);
             console.log("access token is geldig");
+            console.log(t);
           }
           else {
             if(expTime_rt>curTime) {
@@ -49,6 +50,7 @@ const AuthStack = () => {
                 let time = new Date().getTime();//getTime gives the amount of millieseconds that have passed since January 1st 1970
                 let access_token_expired = new Date(time + 10*60*1000).getTime();
                 SecureStore.setItemAsync("access_token_expired", JSON.stringify(access_token_expired));
+                console.log(res.data.access_token)
               }).catch(function (error) {
               });
               setSignedIn(true);
