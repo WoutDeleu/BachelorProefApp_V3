@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useReducer } from "react";
+import { createStore } from 'redux';
 import { View,Text } from "react-native";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import LoginScreen from "../screens/LoginScreen";
 import * as SecureStore from 'expo-secure-store';
 import axios from "axios";
 import Tabs from "./Tabs";
+import store from "./store";
 import ForgotPasswordScreen from "../screens/ForgotPassword";
-
-
 
 const AuthStack = () => {
     const AuthStack = createNativeStackNavigator();
@@ -34,6 +34,7 @@ const AuthStack = () => {
             setSignedIn(true);
             console.log("access token is geldig");
             console.log(t);
+            store.dispatch({type : 'login'})
           }
           else {
             if(expTime_rt>curTime) {
@@ -54,9 +55,11 @@ const AuthStack = () => {
               }).catch(function (error) {
               });
               setSignedIn(true);
+              store.dispatch({type : 'login'})
             }
             else {
               setSignedIn(false);
+              store.dispatch({type: 'logout'})
               console.log("Access token en refresh token zijn ongeldig")
             }
           }
@@ -71,13 +74,14 @@ const AuthStack = () => {
       return null;
     }
 
-
-  return (
-    <AuthStack.Navigator>
-        {isSignedIn? (
-              <AuthStack.Screen name="Tabs" component={Tabs} options={{headerShown : false}}/>
+    function rendFunc() {
+      console.log(store.getState());
+      return(
+          <AuthStack.Navigator>
+            {!store.getState()? (
+                <AuthStack.Screen name="Tabs" component={Tabs} options={{headerShown : false}}/>
             ) : (
-               <>
+                <>
                   <AuthStack.Screen
                       name = "LoginScreen"
                       component={LoginScreen}
@@ -94,26 +98,34 @@ const AuthStack = () => {
                       }}
                   />
                   <AuthStack.Screen
-                    name = "ForgotPassword"
-                    component={ForgotPasswordScreen}
-                    options={{
-                    title: 'ForgotPassword',
-                    headerStyle: {
-                    backgroundColor: '#212521'
-                  },
-                    headerTitleStyle: {
-                    fontWeight: 'bold',
-                    color: '#ffffff',
-                  },
-                    animationTypeForReplace: isSignedIn ? 'pop' : 'push',
-                  }}
-                />
-             </>
-        )
-        }
-    </AuthStack.Navigator>
+                      name = "ForgotPassword"
+                      component={ForgotPasswordScreen}
+                      options={{
+                        title: 'ForgotPassword',
+                        headerStyle: {
+                          backgroundColor: '#212521'
+                        },
+                        headerTitleStyle: {
+                          fontWeight: 'bold',
+                          color: '#ffffff',
+                        },
+                        animationTypeForReplace: isSignedIn ? 'pop' : 'push',
+                      }}
+                  />
+                </>
+            )
+            }
+          </AuthStack.Navigator>
+      );
+    }
 
-  );
-};
+    return (
+
+      rendFunc()
+    );
+
+  store.subscribe(rendFunc);
+  };
+
 
 export default AuthStack;

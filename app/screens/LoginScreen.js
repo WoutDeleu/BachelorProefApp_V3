@@ -4,12 +4,13 @@ import * as SecureStore from 'expo-secure-store';
 import axios from "axios";
 import * as Updates from 'expo-updates';
 import Tabs from "../routes/Tabs"
+import store from "../routes/store"
 
 import { Root, Popup } from 'popup-ui';
 import jwt_decode from 'jwt-decode';
 import qs from "qs";
 import useAuth from '../hooks/useAuth';
-function LoginScreen({navigation}) {
+function LoginScreen({navigation}, props) {
     const ipKot = "192.168.20.181";
     const ipCamp = "192.168.163.1";
     const portNr = "8081";
@@ -63,7 +64,9 @@ function LoginScreen({navigation}) {
             save("refresh_token_expired", JSON.stringify(refresh_token_expired));
 
             console.log("Ingelogd");
-            reloadApp();
+            store.dispatch({type: 'login'})
+            //reloadApp();
+            //Hier moet functie komen om te navigaten.
 
         }).catch(function (error) {
             console.log(error.response?.status)

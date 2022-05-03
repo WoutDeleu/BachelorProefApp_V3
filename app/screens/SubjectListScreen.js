@@ -3,7 +3,6 @@ import {
     Text,
     View,
     StyleSheet,
-    TouchableOpacity,
     FlatList,
     SafeAreaView,
     StatusBar,
@@ -17,6 +16,7 @@ import axios from "axios";
 import TextAncestorContext from "react-native-web/dist/exports/Text/TextAncestorContext";
 import Colors from "react-native/Libraries/NewAppScreen/components/Colors";
 import ReadMore from 'react-native-read-more-text';
+import {TouchableOpacity} from "react-native";
 
 const ipKot = "192.168.20.181";
 const ipCamp = "192.168.163.1";
@@ -146,12 +146,14 @@ function  SubjectListScreen({navigation}) {
                 justifyContent: "center",
                 alignItems: "center",
                 backgroundColor: "#ffc2c2",
+                zIndex: 1
             }}>
                 <TouchableOpacity
+                    // onPress={() => { navigation.navigate('AddSubject') }}
+                    onPress={()=> {console.log("press")}}
                     style={{
                         borderWidth:1,
                         borderColor:'rgba(0,0,0,0.2)',
-                        position: 'absolute',
                         top:580,
                         alignItems:'center',
                         justifyContent:'center',
@@ -159,6 +161,7 @@ function  SubjectListScreen({navigation}) {
                         height:40,
                         backgroundColor:'#212521',
                         borderRadius:50,
+                        zIndex: 1
                     }}
                 >
                     <Ionicons name="add-outline" size={30} color="#ffff"/>
@@ -199,7 +202,7 @@ const styles = StyleSheet.create({
         alignSelf: 'flex-start',
         padding: 20,
         marginVertical: 8,
-        marginHorizontal: 16
+        marginHorizontal: 16,
     },
     title: {
         color: "#ffff",
