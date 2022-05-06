@@ -2,16 +2,20 @@ import {Text, View} from "react-native";
 import ReadMore from "react-native-read-more-text";
 import _renderTruncatedFooter from "./_renderTruncatedFooter";
 import _renderRevealedFooter from "./_renderRevealedFooter";
+import _handleTextReady from "./_handleTextReady";
 import React from "react";
+
+import styleSubjectList from "../../styles/styleSubjectList";
+
 
 const Subject = ({subject}) => {
     {console.log(subject.name)}
     return(
-        <View style={styles.subjectTotalBlock}>
-            <Text style={styles.students}>
+        <View style={styleSubjectList.subjectTotalBlock}>
+            <Text style={styleSubjectList.students}>
                 Students: {subject.nrOfStudents}
             </Text>
-            <Text style ={styles.title}>
+            <Text style ={styleSubjectList.title}>
                 {subject.name}
             </Text>
             <ReadMore
@@ -19,7 +23,7 @@ const Subject = ({subject}) => {
                 renderTruncatedFooter={_renderTruncatedFooter}
                 renderRevealedFooter={_renderRevealedFooter}
                 onReady={_handleTextReady}>
-                <Text style={styles.shortDescription}>
+                <Text style={styleSubjectList.shortDescription}>
                     {subject.description}
                 </Text>
             </ReadMore>

@@ -16,6 +16,7 @@ import getAccessToken from "../functions/getAccessToken";
 import refreshToken from "../functions/refreshToken";
 
 import Subject from "../functions/SubjectLoaders/Subject";
+import styleSubjectList from "../styles/styleSubjectList";
 
 function  SubjectListScreen({navigation}) {
     const [subjects, setSubjects] = useState([]);
@@ -32,7 +33,7 @@ function  SubjectListScreen({navigation}) {
 
             let config = {
                 method: 'get',
-                // url: 'http://' + ipKot + ':' + portNr + '/subjectManagement/subjects',
+                // url: 'https://mastertoolbackend.herokuapp.com/subjectManagement/subjects',
                 url: 'https://mastertoolbackend.herokuapp.com/subjectManagement/subjects/approved',
                 headers: {
                     'Authorization': 'Bearer ' + JSON.parse(token)
@@ -40,6 +41,7 @@ function  SubjectListScreen({navigation}) {
             };
             axios(config)
                 .then(function (res) {
+                    console.log(res.data)
                     setSubjects(res.data);
                     setHasloaded(true);
                     //console.log(res.data);
@@ -49,14 +51,11 @@ function  SubjectListScreen({navigation}) {
         constructor();
     },[])
 
-    const _handleTextReady = () => {
-        // ...
-    }
 
     if(!hasLoaded) return null;
 
     return(
-        <View style={styles.container}>
+        <View style={styleSubjectList.container}>
                 <TouchableOpacity
                     // onPress={() => { navigation.navigate('AddSubject') }}
                     onPress={() => console.log("addSubj")}
