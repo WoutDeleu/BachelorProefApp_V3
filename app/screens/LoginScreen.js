@@ -4,7 +4,6 @@ import * as SecureStore from 'expo-secure-store';
 import axios from "axios";
 import * as Updates from 'expo-updates';
 import Tabs from "../routes/Tabs"
-import store from "../routes/store"
 
 import { Root, Popup } from 'popup-ui';
 import jwt_decode from 'jwt-decode';
@@ -39,7 +38,7 @@ function LoginScreen({navigation}, props) {
 
     const logInCheck = async (e) => {
         e.preventDefault();
-        const url_login = "http://" + ipKot + ":" + portNr + "/authentication/login";
+        const url_login = "http://" + ipCamp + ":" + portNr + "/authentication/login";
         const data = qs.stringify({email, password});
         const config = {
             method: 'post',
@@ -50,6 +49,7 @@ function LoginScreen({navigation}, props) {
             data: data
         };
         axios(config).then(function(res){
+            console.log("test");
             const decoded = jwt_decode(res.data.access_token);
             const roles = decoded.roles;
             //setAuth({email,password, roles});
@@ -64,8 +64,7 @@ function LoginScreen({navigation}, props) {
             save("refresh_token_expired", JSON.stringify(refresh_token_expired));
 
             console.log("Ingelogd");
-            store.dispatch({type: 'login'})
-            //reloadApp();
+            reloadApp();
             //Hier moet functie komen om te navigaten.
 
         }).catch(function (error) {
@@ -98,6 +97,14 @@ function LoginScreen({navigation}, props) {
             }
             //errRef.current.focus();
         });
+
+        axios(config)
+            .then(function (response) {
+                console.log(JSON.stringify(response.data));
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
     }
 
     async function reloadApp () {

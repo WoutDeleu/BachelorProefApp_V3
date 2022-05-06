@@ -9,7 +9,11 @@ const SubjectStack = () => {
 
 
     return (
-      <SubjectStack.Navigator>
+      <SubjectStack.Navigator
+        screenOptions={{
+            headerShown: false
+        }}
+      >
           <SubjectStack.Screen
               name="SubjectList"
               component={SubjectListScreen}
@@ -21,3 +25,4 @@ const SubjectStack = () => {
       </SubjectStack.Navigator>
     );
 }
+export default SubjectStack;

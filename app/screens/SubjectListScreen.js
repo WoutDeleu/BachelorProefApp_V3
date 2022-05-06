@@ -141,16 +141,15 @@ function  SubjectListScreen({navigation}) {
     return(
         <View style={styles.container}>
             {/*Code voor de plusbutton*/}
-            <View style={{
-                flex: 1,
-                justifyContent: "center",
-                alignItems: "center",
-                backgroundColor: "#ffc2c2",
-                zIndex: 1
-            }}>
+            {/*<View style={{*/}
+            {/*    flex: 1,*/}
+            {/*    justifyContent: "center",*/}
+            {/*    alignItems: "center",*/}
+            {/*    backgroundColor: "#ffc2c2",*/}
+            {/*    zIndex: 1*/}
+            {/*}}>*/}
                 <TouchableOpacity
-                    // onPress={() => { navigation.navigate('AddSubject') }}
-                    onPress={()=> {console.log("press")}}
+                    onPress={() => { navigation.navigate('AddSubject') }}
                     style={{
                         borderWidth:1,
                         borderColor:'rgba(0,0,0,0.2)',
@@ -166,7 +165,7 @@ function  SubjectListScreen({navigation}) {
                 >
                     <Ionicons name="add-outline" size={30} color="#ffff"/>
                 </TouchableOpacity>
-            </View>
+            {/*</View>*/}
             <SafeAreaView style={{justifyContent: 'center',}}>
                 <FlatList
                     style={{flex:1, marginTop: StatusBar.currentHeight || 0,}}

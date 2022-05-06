@@ -10,13 +10,14 @@ import SubjectListScreen from "../screens/SubjectListScreen";
 import SettingsScreen from "../screens/SettingsScreen";
 import {Image} from "react-native-web";
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import Feather from 'react-native-vector-icons/Feather';
+import SubjectStack from "./SubjectStack";
 
 const Tabs = () => {
     const Tab = createBottomTabNavigator();
 
     return(
         <Tab.Navigator
+            swipeEnabled={true}
             screenOptions={{
                 headerShown: false,
                 tabBarShowLabel: true,
@@ -27,8 +28,6 @@ const Tabs = () => {
                 },
                 tabBarInactiveTintColor: '#9b9b9b',
                 tabBarActiveTintColor: '#000000',
-
-
             }}
         >
             <Tab.Screen
@@ -50,7 +49,7 @@ const Tabs = () => {
                 })}
             />
             <Tab.Screen
-                name="List" component={SubjectListScreen}
+                name="List" component={SubjectStack}
                 options={({route}) => ({
                     tabBarIcon: ({color, size}) => (
                         <Ionicons name="list-circle-outline" color={color} size={size} />

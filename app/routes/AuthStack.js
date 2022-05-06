@@ -6,7 +6,6 @@ import LoginScreen from "../screens/LoginScreen";
 import * as SecureStore from 'expo-secure-store';
 import axios from "axios";
 import Tabs from "./Tabs";
-import store from "./store";
 import ForgotPasswordScreen from "../screens/ForgotPassword";
 
 const AuthStack = () => {
@@ -34,7 +33,6 @@ const AuthStack = () => {
             setSignedIn(true);
             console.log("access token is geldig");
             console.log(t);
-            store.dispatch({type : 'login'})
           }
           else {
             if(expTime_rt>curTime) {
@@ -55,11 +53,9 @@ const AuthStack = () => {
               }).catch(function (error) {
               });
               setSignedIn(true);
-              store.dispatch({type : 'login'})
             }
             else {
               setSignedIn(false);
-              store.dispatch({type: 'logout'})
               console.log("Access token en refresh token zijn ongeldig")
             }
           }
@@ -75,10 +71,9 @@ const AuthStack = () => {
     }
 
     function rendFunc() {
-      console.log(store.getState());
       return(
           <AuthStack.Navigator>
-            {!store.getState()? (
+            {isSignedIn? (
                 <AuthStack.Screen name="Tabs" component={Tabs} options={{headerShown : false}}/>
             ) : (
                 <>
@@ -120,11 +115,8 @@ const AuthStack = () => {
     }
 
     return (
-
       rendFunc()
     );
-
-  store.subscribe(rendFunc);
   };
 
 
