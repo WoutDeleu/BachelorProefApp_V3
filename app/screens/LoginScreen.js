@@ -38,7 +38,8 @@ function LoginScreen({navigation}, props) {
 
     const logInCheck = async (e) => {
         e.preventDefault();
-        const url_login = "http://" + ipCamp + ":" + portNr + "/authentication/login";
+        // const url_login = "http://" + ipCamp + ":" + portNr + "/authentication/login";
+        const url_login = "https://mastertoolbackend.herokuapp.com/authentication/login";
         const data = qs.stringify({email, password});
         const config = {
             method: 'post',

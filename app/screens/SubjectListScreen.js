@@ -46,7 +46,8 @@ function  SubjectListScreen({navigation}) {
         let expTime_at = await SecureStore.getItemAsync('access_token_expired');
         let expTime_rt = await SecureStore.getItemAsync('refresh_token_expired');
         let curTime = new Date().getTime();
-        const url_refresh = "http://" + ipKot + ":" + portNr + "/authentication/token/refresh";
+        // const url_refresh = "http://" + ipKot + ":" + portNr + "/authentication/token/refresh";
+        const url_refresh = "https://mastertoolbackend.herokuapp.com/authentication/token/refresh";
 
         if(expTime_at>curTime) { }
         else {
@@ -78,7 +79,8 @@ function  SubjectListScreen({navigation}) {
 
             let config = {
                 method: 'get',
-                url: 'http://' + ipKot + ':' + portNr + '/subjectManagement/subjects',
+                // url: 'http://' + ipKot + ':' + portNr + '/subjectManagement/subjects',
+                url: 'https://mastertoolbackend.herokuapp.com/subjectManagement/subjects',
                 headers: {
                     'Authorization': 'Bearer ' + JSON.parse(token)
                 }
@@ -140,16 +142,9 @@ function  SubjectListScreen({navigation}) {
 
     return(
         <View style={styles.container}>
-            {/*Code voor de plusbutton*/}
-            {/*<View style={{*/}
-            {/*    flex: 1,*/}
-            {/*    justifyContent: "center",*/}
-            {/*    alignItems: "center",*/}
-            {/*    backgroundColor: "#ffc2c2",*/}
-            {/*    zIndex: 1*/}
-            {/*}}>*/}
                 <TouchableOpacity
-                    onPress={() => { navigation.navigate('AddSubject') }}
+                    // onPress={() => { navigation.navigate('AddSubject') }}
+                    onPress={() => console.log("addSubj")}
                     style={{
                         borderWidth:1,
                         borderColor:'rgba(0,0,0,0.2)',
