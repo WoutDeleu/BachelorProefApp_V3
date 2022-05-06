@@ -43,6 +43,8 @@ function LoginScreen({navigation}, props) {
 
             save("access_token", JSON.stringify(res.data.access_token));
             save("refresh_token", JSON.stringify(res.data.refresh_token));
+            save("role", JSON.stringify(res.data.roles));
+            save("isLoggedIn", JSON.stringify(true));
 
             const time = new Date().getTime();//getTime gives the amount of millieseconds that have passed since January 1st 1970
             const access_token_expired = new Date(time + 10 * 60 * 1000).getTime();
@@ -52,7 +54,6 @@ function LoginScreen({navigation}, props) {
 
             console.log("Ingelogd");
             reloadApp();
-            //Hier moet functie komen om te navigaten.
 
         }).catch(function (error) {
             console.log(error.response?.status)
