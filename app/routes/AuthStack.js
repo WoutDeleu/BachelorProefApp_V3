@@ -13,9 +13,6 @@ const AuthStack = () => {
     const [isSignedIn, setSignedIn] = useState();
     const [loading, setLoading] = useState();
 
-    const ipKot = "192.168.20.181";
-    const portNr = "8081";
-    // const url_refresh = "http://" + ipKot + ":" + portNr + "/authentication/token/refresh";
     const url_refresh = "https://https://mastertoolbackend.herokuapp.com/authentication/token/refresh"
     React.useEffect(() => {
       const loggedIn = async () => {

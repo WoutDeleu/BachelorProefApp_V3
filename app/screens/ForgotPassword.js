@@ -12,14 +12,4 @@ function ForgotPassword() {
     )
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1
-    },
-    view: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-    }
-})
 export default ForgotPassword;

@@ -1,19 +1,18 @@
 import React, { useRef, useState } from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image, Dimensions, AsyncStorage } from 'react-native';
-import * as SecureStore from 'expo-secure-store';
+import { Text, View, TextInput, TouchableOpacity, Image, Dimensions, AsyncStorage } from 'react-native';
 import axios from "axios";
-import * as Updates from 'expo-updates';
-import Tabs from "../routes/Tabs"
+import styleLogin from "../styles/styleLogin"
+
+import save from "../functions/save"
+import reloadApp from "../functions/reloadApp"
+import validateEmail from "../functions/ValidateEmail";
+
 
 import { Root, Popup } from 'popup-ui';
 import jwt_decode from 'jwt-decode';
 import qs from "qs";
 import useAuth from '../hooks/useAuth';
 function LoginScreen({navigation}, props) {
-    const ipKot = "192.168.20.181";
-    const ipCamp = "192.168.163.1";
-    const portNr = "8081";
-
     const win = Dimensions.get('window');
 
     const [email,setEmail] = useState('');
@@ -21,26 +20,13 @@ function LoginScreen({navigation}, props) {
     const { auth, setAuth } = useAuth();
     const [errMsg, setErrMsg] = useState('');
 
-    const validateEmail = (text) => {
-        console.log(text);
-        let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
-        if (reg.test(text) === false) {
-            console.log("Email is Not Correct");
-            setEmail(text);
-            return false;
-        }
-        else {
-            setEmail(text);
-            console.log("Email is Correct");
-        }
-    }
-
 
     const logInCheck = async (e) => {
         e.preventDefault();
-        // const url_login = "http://" + ipCamp + ":" + portNr + "/authentication/login";
         const url_login = "https://mastertoolbackend.herokuapp.com/authentication/login";
+        // const url_login = "http://192.168.20.181:8081/authentication/login";
         const data = qs.stringify({email, password});
+        console.log(email);
         const config = {
             method: 'post',
             url: url_login,
@@ -108,23 +94,10 @@ function LoginScreen({navigation}, props) {
             });
     }
 
-    async function reloadApp () {
-        await Updates.reloadAsync();
-    }
-
-    async function save(key, value) {
-        try {
-            await SecureStore.setItemAsync(key, value);
-            //console.log("done");
-        }
-        catch (e) {
-            console.log(e.message);
-        }
-    }
 
     return(
         <Root>
-            <View style={styles.container}>
+            <View style={styleLogin.containerWhite}>
                 <Image
                     source={require('../../assets/pics/KUL_FullLogo.png')}
                     style={{
@@ -138,32 +111,35 @@ function LoginScreen({navigation}, props) {
                     }}
                 />
 
-                <View style={styles.inputView}>
+                <View style={styleLogin.inputRoundedRectangle}>
                     <TextInput
                         autoComplete={email}
                         type={email}
-                        style={styles.inputText}
+                        style={styleLogin.inputPlaceholderText}
                         placeholder="Email..."
                         placeholderTextColor="#212521"
-                        onChangeText={text => validateEmail(text)}
+                        onChangeText={text => {
+                            validateEmail(text);
+                            setEmail(text);
+                        }}
                     />
                 </View>
-                <View style={styles.inputView} >
+                <View style={styleLogin.inputRoundedRectangle} >
                     <TextInput
                         secureTextEntry
-                        style={styles.inputText}
+                        style={styleLogin.inputPlaceholderText}
                         placeholder="Password..."
                         placeholderTextColor="#212521"
                         onChangeText={text => setPassword(text)}/>
                 </View>
                 <TouchableOpacity onPress={() => { navigation.navigate('ForgotPassword')}}>
-                    <Text style={styles.forgot}>Forgot Password?</Text>
+                    <Text style={styleLogin.forgotPasswordFont}>Forgot Password?</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.loginBtn} onPress={logInCheck}>
-                    <Text style={styles.loginText}>LOGIN</Text>
+                <TouchableOpacity style={styleLogin.loginBtn} onPress={logInCheck   }>
+                    <Text style={styleLogin.loginText}>LOGIN</Text>
                 </TouchableOpacity>
                 <TouchableOpacity>
-                    <Text style={{color: "black"}}>
+                    <Text style={styleLogin.forgotPasswordFont}>
                         Register as a company?
                     </Text>
                 </TouchableOpacity>
@@ -171,54 +147,5 @@ function LoginScreen({navigation}, props) {
         </Root>
     )
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-        //borderTopLeftRadius:25,
-        //borderTopRightRadius:25,
-    },
-    logo:{
-        fontWeight:"bold",
-        fontSize:50,
-        color:"#fb5b5a",
-        marginBottom:40
-    },
-    inputView:{
-        width:"80%",
-        backgroundColor:"#fff",
-        borderRadius:25,
-        borderColor:"#212521",
-        borderWidth:2,
-        height:50,
-        marginBottom:20,
-        justifyContent:"center",
-        padding:20
-    },
-    inputText:{
-        height:50,
-        color:"black"
-    },
-    forgot:{
-        color:"black",
-        fontSize:11
-    },
-    loginBtn:{
-        width:"80%",
-        backgroundColor:"#212521",
-        borderRadius:25,
-        height:50,
-        alignItems:"center",
-        justifyContent:"center",
-        marginTop:40,
-        marginBottom:10
-    },
-    loginText:{
-        color:"white"
-    }
-});
 
 export default LoginScreen;

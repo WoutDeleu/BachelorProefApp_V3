@@ -3,18 +3,6 @@ import * as SecureStore from "expo-secure-store";
 import React, {useState} from "react";
 
 function ActionScreen({navigation}) {
-    async function logOut() {
-        try {
-            await SecureStore.deleteItemAsync("access_token"    );
-            await SecureStore.deleteItemAsync("refresh_token");
-            await SecureStore.deleteItemAsync("access_token_expired");
-            await SecureStore.deleteItemAsync("refresh_token_expired");
-            console.log("Uitgelogd");
-        } catch (e) {
-            console.log(e.message);
-        }
-    }
-
     return null;
 }
 
