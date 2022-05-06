@@ -80,7 +80,7 @@ function  SubjectListScreen({navigation}) {
             let config = {
                 method: 'get',
                 // url: 'http://' + ipKot + ':' + portNr + '/subjectManagement/subjects',
-                url: 'https://mastertoolbackend.herokuapp.com/subjectManagement/subjects',
+                url: 'https://mastertoolbackend.herokuapp.com/subjectManagement/subjects/approved',
                 headers: {
                     'Authorization': 'Bearer ' + JSON.parse(token)
                 }
