@@ -12,6 +12,7 @@ import { Root, Popup } from 'popup-ui';
 import jwt_decode from 'jwt-decode';
 import qs from "qs";
 import useAuth from '../hooks/useAuth';
+import saveOwnId from "../functions/saveOwnId";
 function LoginScreen({navigation}, props) {
     const win = Dimensions.get('window');
 
@@ -38,12 +39,11 @@ function LoginScreen({navigation}, props) {
         axios(config).then(function(res){
             //console.log(res.data);
             const decoded = jwt_decode(res.data.access_token);
-            const roles = jwt_decode(res.data.access_token)
-            console.log(roles)
+            const roles = decoded.roles;
 
             save("access_token", JSON.stringify(res.data.access_token));
             save("refresh_token", JSON.stringify(res.data.refresh_token));
-            save("role", JSON.stringify(res.data.roles));
+            save("role", JSON.stringify(roles));
             save("isLoggedIn", JSON.stringify(true));
 
             const time = new Date().getTime();//getTime gives the amount of millieseconds that have passed since January 1st 1970
@@ -51,6 +51,7 @@ function LoginScreen({navigation}, props) {
             const refresh_token_expired = new Date(time + 24 * 60 * 60 * 1000).getTime();
             save("access_token_expired", JSON.stringify(access_token_expired));
             save("refresh_token_expired", JSON.stringify(refresh_token_expired));
+            saveOwnId();
 
             console.log("Ingelogd");
             reloadApp();
