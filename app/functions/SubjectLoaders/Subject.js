@@ -1,17 +1,21 @@
 import {Text, View} from "react-native";
 import ReadMore from "react-native-read-more-text";
-import _renderTruncatedFooter from "./_renderTruncatedFooter";
-import _renderRevealedFooter from "./_renderRevealedFooter";
-import _handleTextReady from "./_handleTextReady";
+import _renderTruncatedFooter from "./ReadMore/_renderTruncatedFooter";
+import _renderRevealedFooter from "./ReadMore/_renderRevealedFooter";
+import _handleTextReady from "./ReadMore/_handleTextReady";
+import Hart from "./SubjectElements/HartButton";
+import Company from "./SubjectElements/Company";
 import React from "react";
 
 import styleSubjectList from "../../styles/styleSubjectList";
-
+import Pdf from "./SubjectElements/Pdf";
 
 const Subject = ({subject}) => {
-    {console.log(subject.name)}
+    console.log(subject.name)
     return(
         <View style={styleSubjectList.subjectTotalBlock}>
+            <Hart/>
+            <Pdf subject={subject}/>
             <Text style={styleSubjectList.students}>
                 Students: {subject.nrOfStudents}
             </Text>
@@ -27,6 +31,7 @@ const Subject = ({subject}) => {
                     {subject.description}
                 </Text>
             </ReadMore>
+            <Company subject={subject}/>
         </View>
     );
 };

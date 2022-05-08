@@ -36,10 +36,10 @@ function LoginScreen({navigation}, props) {
             data: data
         };
         axios(config).then(function(res){
-            console.log("test");
+            //console.log(res.data);
             const decoded = jwt_decode(res.data.access_token);
-            const roles = decoded.roles;
-            //setAuth({email,password, roles});
+            const roles = jwt_decode(res.data.access_token)
+            console.log(roles)
 
             save("access_token", JSON.stringify(res.data.access_token));
             save("refresh_token", JSON.stringify(res.data.refresh_token));
@@ -136,7 +136,7 @@ function LoginScreen({navigation}, props) {
                 <TouchableOpacity onPress={() => { navigation.navigate('ForgotPassword')}}>
                     <Text style={styleLogin.forgotPasswordFont}>Forgot Password?</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styleLogin.loginBtn} onPress={logInCheck   }>
+                <TouchableOpacity style={styleLogin.loginBtn} onPress={logInCheck}>
                     <Text style={styleLogin.loginText}>LOGIN</Text>
                 </TouchableOpacity>
                 <TouchableOpacity>

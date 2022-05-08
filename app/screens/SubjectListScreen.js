@@ -33,8 +33,8 @@ function  SubjectListScreen({navigation}) {
 
             let config = {
                 method: 'get',
-                // url: 'https://mastertoolbackend.herokuapp.com/subjectManagement/subjects',
-                url: 'https://mastertoolbackend.herokuapp.com/subjectManagement/subjects/approved',
+                url: 'https://mastertoolbackend.herokuapp.com/subjectManagement/subjects',
+                // url: 'https://mastertoolbackend.herokuapp.com/subjectManagement/subjects/approved',
                 headers: {
                     'Authorization': 'Bearer ' + JSON.parse(token)
                 }
@@ -74,7 +74,6 @@ function  SubjectListScreen({navigation}) {
                 >
                     <Ionicons name="add-outline" size={30} color="#ffff"/>
                 </TouchableOpacity>
-            {/*</View>*/}
             <SafeAreaView style={{justifyContent: 'center',}}>
                 <FlatList
                     style={{flex:1, marginTop: StatusBar.currentHeight || 0,}}

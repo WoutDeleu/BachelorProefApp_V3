@@ -31,7 +31,7 @@ const styleSubjectList =  StyleSheet.create({
         justifyContent: 'center',alignItems:"center"
     },
     students: {
-        color: "#ffff",
+        color: "#ffffff",
         fontStyle: 'italic',
         justifyContent: 'center',alignItems:"center"
     },
@@ -39,6 +39,16 @@ const styleSubjectList =  StyleSheet.create({
         color: '#C0C0C0',
         justifyContent: 'center',alignItems:"center"
 
+    },
+    heartIcon: {
+        position: 'absolute',
+        right: 10,
+        top: 10
+    },
+    pdf: {
+        position: 'absolute',
+        right: 10,
+        bottom: 10
     }
 });
 
