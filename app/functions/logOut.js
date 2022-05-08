@@ -9,6 +9,7 @@ async function logOut() {
         await SecureStore.deleteItemAsync("access_token_expired");
         await SecureStore.deleteItemAsync("refresh_token_expired");
         await SecureStore.deleteItemAsync("role");
+        await SecureStore.deleteItemAsync("ownId")
         console.log("Uitgelogd");
         await save("isLoggedIn", JSON.stringify(false));
         await reloadApp();
