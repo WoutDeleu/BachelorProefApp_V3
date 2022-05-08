@@ -1,8 +1,18 @@
 import * as SecureStore from "expo-secure-store";
 import axios from "axios";
 import save from "./save";
+import React from "react";
+import refreshToken from "./refreshToken";
 
 const saveOwnId = async () => {
+    React.useEffect(() => {
+        const loggedIn = async () => {
+            await refreshToken();
+        }
+        loggedIn()
+    }, [])
+
+
     const axios = require('axios');
 
     let config = {
