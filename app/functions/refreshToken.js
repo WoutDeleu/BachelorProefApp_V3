@@ -4,13 +4,10 @@ import axios from "axios";
 const refreshToken = async () => {
     const t = await SecureStore.getItemAsync("access_token")
     const time = await SecureStore.getItemAsync("access_token_expired")
-    // console.log(t);
-    // console.log(time);
 
     let expTime_at = await SecureStore.getItemAsync('access_token_expired');
     let expTime_rt = await SecureStore.getItemAsync('refresh_token_expired');
     let curTime = new Date().getTime();
-    // const url_refresh = "http://" + ipKot + ":" + portNr + "/authentication/token/refresh";
     const url_refresh = "https://mastertoolbackend.herokuapp.com/authentication/token/refresh";
 
     if(expTime_at>curTime) { }

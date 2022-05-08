@@ -49,7 +49,8 @@ const styleSubjectList =  StyleSheet.create({
         position: 'absolute',
         right: 10,
         bottom: 10
-    }
+    },
+
 });
 
 export default styleSubjectList;

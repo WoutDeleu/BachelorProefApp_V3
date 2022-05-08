@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { Text, View, TextInput, TouchableOpacity, Image, Dimensions, AsyncStorage } from 'react-native';
 import axios from "axios";
-import styleLogin from "../styles/styleLogin"
+import styleLoginLogout from "../styles/styleLoginLogout"
 
 import save from "../functions/save"
 import reloadApp from "../functions/reloadApp"
@@ -99,7 +99,7 @@ function LoginScreen({navigation}, props) {
 
     return(
         <Root>
-            <View style={styleLogin.containerWhite}>
+            <View style={styleLoginLogout.containerWhite}>
                 <Image
                     source={require('../../assets/pics/KUL_FullLogo.png')}
                     style={{
@@ -113,11 +113,11 @@ function LoginScreen({navigation}, props) {
                     }}
                 />
 
-                <View style={styleLogin.inputRoundedRectangle}>
+                <View style={styleLoginLogout.inputRoundedRectangle}>
                     <TextInput
                         autoComplete={email}
                         type={email}
-                        style={styleLogin.inputPlaceholderText}
+                        style={styleLoginLogout.inputPlaceholderText}
                         placeholder="Email..."
                         placeholderTextColor="#212521"
                         onChangeText={text => {
@@ -126,22 +126,22 @@ function LoginScreen({navigation}, props) {
                         }}
                     />
                 </View>
-                <View style={styleLogin.inputRoundedRectangle} >
+                <View style={styleLoginLogout.inputRoundedRectangle} >
                     <TextInput
                         secureTextEntry
-                        style={styleLogin.inputPlaceholderText}
+                        style={styleLoginLogout.inputPlaceholderText}
                         placeholder="Password..."
                         placeholderTextColor="#212521"
                         onChangeText={text => setPassword(text)}/>
                 </View>
                 <TouchableOpacity onPress={() => { navigation.navigate('ForgotPassword')}}>
-                    <Text style={styleLogin.forgotPasswordFont}>Forgot Password?</Text>
+                    <Text style={styleLoginLogout.forgotPasswordFont}>Forgot Password?</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styleLogin.loginBtn} onPress={logInCheck}>
-                    <Text style={styleLogin.loginText}>LOGIN</Text>
+                <TouchableOpacity style={styleLoginLogout.loginBtn} onPress={logInCheck}>
+                    <Text style={styleLoginLogout.loginText}>LOGIN</Text>
                 </TouchableOpacity>
                 <TouchableOpacity>
-                    <Text style={styleLogin.forgotPasswordFont}>
+                    <Text style={styleLoginLogout.forgotPasswordFont}>
                         Register as a company?
                     </Text>
                 </TouchableOpacity>

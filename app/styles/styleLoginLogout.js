@@ -1,7 +1,7 @@
-import { StyleSheet } from 'react-native';
+import {StatusBar, StyleSheet} from 'react-native';
 
-const styleLogin =  StyleSheet.create({
-
+const styleLoginLogout =  StyleSheet.create({
+    //LOGIN
     containerWhite: {
         flex: 1,
         backgroundColor: '#fff',
@@ -41,7 +41,36 @@ const styleLogin =  StyleSheet.create({
     },
     loginText:{
         color:"white"
+    },
+
+    //LOGOUT
+    basicContainer:{
+        marginTop: StatusBar.currentHeight || 0,
+        alignItems: 'center'
+    },
+    infoLine:{
+        alignSelf:"flex-start",
+    },
+    tag:{
+        fontSize:20,
+        fontWeight: "bold",
+        fontFamily: "Roboto"
+    },
+    prop:{
+        position: 'absolute',
+        left: 135,
+        fontStyle: 'italic',
+        fontSize:18,
+    },
+    viewLine: {
+        borderBottomColor: "black",
+        borderBottomWidth: StyleSheet.hairlineWidth,
+        alignSelf:'center',
+        width: "85%",
+        marginTop: 15,
+        marginBottom: 10,
+
     }
 });
 
-export default styleLogin;
+export default styleLoginLogout;
