@@ -7,13 +7,14 @@ import * as SecureStore from 'expo-secure-store';
 import axios from "axios";
 import Tabs from "./Tabs";
 import ForgotPasswordScreen from "../screens/ForgotPassword";
+import backendURL from "../backendURL";
 
 const AuthStack = () => {
     const AuthStack = createNativeStackNavigator();
     const [isSignedIn, setSignedIn] = useState();
     const [loading, setLoading] = useState();
 
-    const url_refresh = "https://https://mastertoolbackend.herokuapp.com/authentication/token/refresh"
+    const url_refresh = backendURL + "/authentication/token/refresh"
     React.useEffect(() => {
       const loggedIn = async () => {
         const t = await SecureStore.getItemAsync("access_token")

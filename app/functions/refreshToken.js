@@ -1,5 +1,6 @@
 import * as SecureStore from "expo-secure-store";
 import axios from "axios";
+import backendURL from "../backendURL";
 
 const refreshToken = async () => {
     const t = await SecureStore.getItemAsync("access_token")
@@ -8,7 +9,7 @@ const refreshToken = async () => {
     let expTime_at = await SecureStore.getItemAsync('access_token_expired');
     let expTime_rt = await SecureStore.getItemAsync('refresh_token_expired');
     let curTime = new Date().getTime();
-    const url_refresh = "https://mastertoolbackend.herokuapp.com/authentication/token/refresh";
+    const url_refresh = backendURL + "/authentication/token/refresh";
 
     if(expTime_at>curTime) { }
     else {

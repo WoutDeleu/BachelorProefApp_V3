@@ -3,6 +3,7 @@ import axios from "axios";
 import save from "./save";
 import React from "react";
 import refreshToken from "./refreshToken";
+import backendURL from "../backendURL";
 
 const saveOwnId = async () => {
     React.useEffect(() => {
@@ -17,7 +18,7 @@ const saveOwnId = async () => {
 
     let config = {
         method: 'get',
-        url: 'https://mastertoolbackend.herokuapp.com/userManagement/users/ownId',
+        url: backendURL + '/userManagement/users/ownId',
         headers: {
             'Authorization': 'Bearer ' + JSON.parse(await SecureStore.getItemAsync("access_token"))
         }

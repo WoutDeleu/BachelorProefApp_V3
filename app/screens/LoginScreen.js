@@ -13,6 +13,8 @@ import jwt_decode from 'jwt-decode';
 import qs from "qs";
 import useAuth from '../hooks/useAuth';
 import saveOwnId from "../functions/saveOwnId";
+import backendURL from "../backendURL";
+
 function LoginScreen({navigation}, props) {
     const win = Dimensions.get('window');
 
@@ -24,8 +26,7 @@ function LoginScreen({navigation}, props) {
 
     const logInCheck = async (e) => {
         e.preventDefault();
-        const url_login = "https://mastertoolbackend.herokuapp.com/authentication/login";
-        // const url_login = "http://192.168.20.181:8081/authentication/login";
+        const url_login = backendURL + "/authentication/login";
         const data = qs.stringify({email, password});
         console.log(email);
         const config = {

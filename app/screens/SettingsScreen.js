@@ -6,6 +6,7 @@ import getFromStore from "../functions/getFromStore";
 import refreshToken from "../functions/refreshToken";
 import getAccessToken from "../functions/getAccessToken";
 import axios from "axios";
+import backendURL from "../backendURL";
 
 
 function SettingsScreen() {
@@ -24,7 +25,7 @@ function SettingsScreen() {
 
             const config = {
                 method: 'get',
-                url: 'https://mastertoolbackend.herokuapp.com/userManagement/users/' + ownId,
+                url: backendURL + '/userManagement/users/' + ownId,
                 headers: {
                     'Authorization': 'Bearer ' + JSON.stringify(token)
                 }
@@ -56,7 +57,7 @@ function SettingsScreen() {
 
             <View style={styleLoginLogout.infoLine}>
                 <Text style={styleLoginLogout.tag}>{"\t\t"} Name:</Text>
-                <Text style={styleLoginLogout.prop}>ha{user.lastName}</Text>
+                <Text style={styleLoginLogout.prop}>{user.lastName}</Text>
             </View>
 
             <View style = {styleLoginLogout.viewLine}/>
@@ -64,14 +65,14 @@ function SettingsScreen() {
 
             <View style={styleLoginLogout.infoLine}>
                 <Text style={styleLoginLogout.tag}>{"\t\t"} Firstname: </Text>
-                <Text style={styleLoginLogout.prop}>ha{user.firstName} </Text>
+                <Text style={styleLoginLogout.prop}>{user.firstName} </Text>
             </View>
 
             <View style = {styleLoginLogout.viewLine}/>
 
             <View style={styleLoginLogout.infoLine}>
                 <Text style={styleLoginLogout.tag}>{"\t\t"} Email: </Text>
-                <Text style={styleLoginLogout.prop}>ha{user.email}</Text>
+                <Text style={styleLoginLogout.prop}>{user.email}</Text>
             </View>
 
             <View style = {styleLoginLogout.viewLine}/>

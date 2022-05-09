@@ -17,6 +17,7 @@ import refreshToken from "../functions/refreshToken";
 
 import Subject from "../functions/SubjectLoaders/Subject";
 import styleSubjectList from "../styles/styleSubjectList";
+import backendURL from "../backendURL";
 
 function  SubjectListScreen({navigation}) {
     const [subjects, setSubjects] = useState([]);
@@ -33,8 +34,8 @@ function  SubjectListScreen({navigation}) {
 
             let config = {
                 method: 'get',
-                url: 'https://mastertoolbackend.herokuapp.com/subjectManagement/subjects',
-                // url: 'https://mastertoolbackend.herokuapp.com/subjectManagement/subjects/approved',
+                url: backendURL + '/subjectManagement/subjects',
+                // url: backendURL + '/subjectManagement/subjects/approved',
                 headers: {
                     'Authorization': 'Bearer ' + JSON.parse(token)
                 }

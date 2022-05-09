@@ -2,7 +2,8 @@ import * as SecureStore from "expo-secure-store";
 import refreshToken from "./refreshToken";
 import getAccessToken from "./getAccessToken";
 import axios from "axios";
-import {useState} from "@types/react";
+import {useState} from "react";
+import backendURL from "../backendURL";
 
 const getSpecificCompany = async ({id}) => {
     await refreshToken();
@@ -12,7 +13,7 @@ const getSpecificCompany = async ({id}) => {
 
     let config = {
         method: 'get',
-        url: 'https://mastertoolbackend.herokuapp.com/userManagement/company/' + {id},
+        url: backendURL + '/userManagement/company/' + {id},
         headers: {
             'Authorization': 'Bearer ' + JSON.parse(token),
             ...data.getHeaders()
