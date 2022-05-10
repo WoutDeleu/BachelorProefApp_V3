@@ -20,11 +20,15 @@ import styleSubjectList from "../styles/styleSubjectList";
 import backendURL from "../backendURL";
 import getFromStore from "../functions/getFromStore";
 
-function  FavoriteScreen({navigation}) {
+import {BottomTabBarHeightContext, useBottomTabBarHeight} from '@react-navigation/bottom-tabs';
+import FavoriteSubject from "../functions/SubjectLoaders/FavoriteSubject";
+
+
+function  SubjectListScreen({navigation}) {
     const [subjects, setSubjects] = useState([]);
     const [details, setDetails] = useState([]);
     const [hasLoaded, setHasloaded] = useState(false);
-
+    const tabBarHeight = useBottomTabBarHeight();
 
 
     React.useEffect(()=> {
@@ -38,14 +42,13 @@ function  FavoriteScreen({navigation}) {
             let config = {
                 method: 'get',
                 url: backendURL + '/subjectManagement/subjects',
-                // url: backendURL + '/subjectManagement/subjects/approved',
                 headers: {
                     'Authorization': 'Bearer ' + JSON.parse(token)
                 }
             };
             axios(config)
                 .then(function (res) {
-                    //console.log(res.data)
+                    console.log(res.data)
                     setSubjects(res.data);
                     setHasloaded(true);
                     //console.log(res.data);
@@ -56,34 +59,20 @@ function  FavoriteScreen({navigation}) {
     },[])
 
 
-    if(!hasLoaded) return null;
+    // if(!hasLoaded) return null;
 
     return(
         <View style={styleSubjectList.container}>
-            <TouchableOpacity
-                // onPress={() => { navigation.navigate('AddSubject') }}
-                onPress={() => console.log("addSubj")}
-                style={{
-                    borderWidth:1,
-                    borderColor:'rgba(0,0,0,0.2)',
-                    top:580,
-                    alignItems:'center',
-                    justifyContent:'center',
-                    width:40,
-                    height:40,
-                    backgroundColor:'#212521',
-                    borderRadius:50,
-                    zIndex: 1
-                }}
-            >
-                <Ionicons name="add-outline" size={30} color="#ffff"/>
-            </TouchableOpacity>
             <SafeAreaView style={{justifyContent: 'center',}}>
                 <FlatList
-                    style={{flex:1, marginTop: StatusBar.currentHeight || 0,}}
+                    style={{
+                        flex:1,
+                        marginTop: StatusBar.currentHeight || 0,
+                        marginBottom: tabBarHeight+10
+                    }}
                     data={subjects}
                     renderItem={ ({item}) => {
-                        return <Subject subject={item}/>
+                        return <FavoriteSubject subject={item}/>
                     }}
                     keyExtractor={ subject => subject.id }
                 />
@@ -92,4 +81,4 @@ function  FavoriteScreen({navigation}) {
     )
 }
 
-export default FavoriteScreen;
+export default SubjectListScreen;

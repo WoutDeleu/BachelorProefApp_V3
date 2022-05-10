@@ -8,7 +8,7 @@ const styleSubjectList =  StyleSheet.create({
     plusbutton: {
         borderWidth:1,
         borderColor:'rgba(0,0,0,0.2)',
-        top:580,
+        top:610,
         alignItems:'center',
         justifyContent:'center',
         width:40,

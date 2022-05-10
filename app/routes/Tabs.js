@@ -19,6 +19,7 @@ const Tabs = () => {
         <Tab.Navigator
             swipeEnabled={true}
             screenOptions={{
+                animationEnabled: true,
                 headerShown: false,
                 tabBarShowLabel: true,
                 tabBarStyle: {

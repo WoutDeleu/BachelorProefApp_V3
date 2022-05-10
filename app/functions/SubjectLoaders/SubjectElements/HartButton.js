@@ -41,24 +41,16 @@ const Hart = ({subject}) => {
             axios(config)
                 .then(function (response) {
                     setFavourite(response.data.favouriteSubjects)
-                    console.log(response.data.favouriteSubjects)
+                }).then(() => {
+                    for(let i = 0; i<favourite.length; i++) {
+                        if(favourite[i].id === subject.id) setLiked(true)
+                    }
                 })
-                .catch(function (error) {
-                    console.log(error);
-                });
-
-            for(let i = 0; i<favourite.length; i++) {
-                favouriteId.push(favourite[i].id)
-
-            }
-            if(favouriteId.includes(subject.id)) {
-                console.log("idFrav: " + subject.id);
-                setLiked(true);
-            }
-            setHasloaded(true);
-            console.log("done")
         }
-        constructor();
+        constructor().then(() => {
+            setHasloaded(true);
+            console.log("done");
+        }).catch(e=>console.log(e));
     },[])
 
 
@@ -70,14 +62,14 @@ const Hart = ({subject}) => {
         }
         else {
             console.log("toevoegen aan favorieten");
-            addToFavorites(subject,ownId, token);
+            addToFavorites(subject,ownId,token);
         }
     }
 
     if(!hasloaded) return null;
     else{
         return (
-            <Pressable style={styleSubjectList.heartIcon} onPress={() => checkFavorite()}>
+            <Pressable style={styleSubjectList.heartIcon} onPress={ () => checkFavorite()}>
                 <MaterialCommunityIcons
                     name={liked ? "heart" : "heart-outline"}
                     size={20}

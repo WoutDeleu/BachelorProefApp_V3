@@ -41,14 +41,13 @@ function  SubjectListScreen({navigation}) {
             let config = {
                 method: 'get',
                 url: backendURL + '/subjectManagement/subjects',
-                // url: backendURL + '/subjectManagement/subjects/approved',
                 headers: {
                     'Authorization': 'Bearer ' + JSON.parse(token)
                 }
             };
             axios(config)
                 .then(function (res) {
-                    //console.log(res.data)
+                    console.log(res.data)
                     setSubjects(res.data);
                     setHasloaded(true);
                     //console.log(res.data);
