@@ -5,9 +5,8 @@ import backendURL from "../../../backendURL";
 const addToFavorites = async (subject,ownId,token) => {
     let axios = require('axios');
     let qs = require('qs');
-    ownId = removeFirstAndLast(ownId)
     let data = qs.stringify({
-        'userId': parseInt(ownId),
+        'userId': ownId,
         'subjectId': subject.id,
     });
     let config = {
