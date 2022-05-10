@@ -13,6 +13,7 @@ import removeFirstAndLast from "../../removeFirstAndLast";
 
 const Hart = ({subject}) => {
     const [liked, setLiked] = useState(false);
+    const [hasloaded,setHasloaded] = useState(false);
     const [ownId, setOwnId] = useState('');
     const [token, setToken] = useState('');
     const [favourite, setFavourite] = useState([]);
@@ -48,11 +49,14 @@ const Hart = ({subject}) => {
 
             for(let i = 0; i<favourite.length; i++) {
                 favouriteId.push(favourite[i].id)
+
             }
             if(favouriteId.includes(subject.id)) {
                 console.log("idFrav: " + subject.id);
                 setLiked(true);
             }
+            setHasloaded(true);
+            console.log("done")
         }
         constructor();
     },[])
@@ -70,15 +74,18 @@ const Hart = ({subject}) => {
         }
     }
 
-    return (
-        <Pressable style={styleSubjectList.heartIcon} onPress={() => checkFavorite()}>
-            <MaterialCommunityIcons
-                name={liked ? "heart" : "heart-outline"}
-                size={20}
-                color={liked ? "red" : "white"}
-            />
-        </Pressable>
-    );
+    if(!hasloaded) return null;
+    else{
+        return (
+            <Pressable style={styleSubjectList.heartIcon} onPress={() => checkFavorite()}>
+                <MaterialCommunityIcons
+                    name={liked ? "heart" : "heart-outline"}
+                    size={20}
+                    color={liked ? "red" : "white"}
+                />
+            </Pressable>
+        );
+    }
 };
 
 export default Hart;

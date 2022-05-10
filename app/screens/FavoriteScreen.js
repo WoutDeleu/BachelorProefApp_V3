@@ -1,13 +1,93 @@
-import {Button, Text, View, StyleSheet } from "react-native";
-import * as SecureStore from "expo-secure-store";
-import React from "react";
+import {
+    Button,
+    Text,
+    View,
+    StyleSheet,
+    FlatList,
+    SafeAreaView,
+    StatusBar,
+    ScrollView,
+} from "react-native";
+import React, {Component, useState} from "react";
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import {TouchableOpacity} from "react-native";
 
-function FavoriteScreen({navigation}) {
+import getAccessToken from "../functions/getAccessToken";
+import refreshToken from "../functions/refreshToken";
+
+import Subject from "../functions/SubjectLoaders/Subject";
+import styleSubjectList from "../styles/styleSubjectList";
+import backendURL from "../backendURL";
+import getFromStore from "../functions/getFromStore";
+
+function  FavoriteScreen({navigation}) {
+    const [subjects, setSubjects] = useState([]);
+    const [details, setDetails] = useState([]);
+    const [hasLoaded, setHasloaded] = useState(false);
+
+
+
+    React.useEffect(()=> {
+        const constructor = async () => {
+            await refreshToken();
+            let token = await getAccessToken();
+            let ownId = await getFromStore("ownId")
+            console.log("ownId: " + ownId)
+            let axios = require('axios');
+
+            let config = {
+                method: 'get',
+                url: backendURL + '/subjectManagement/subjects',
+                // url: backendURL + '/subjectManagement/subjects/approved',
+                headers: {
+                    'Authorization': 'Bearer ' + JSON.parse(token)
+                }
+            };
+            axios(config)
+                .then(function (res) {
+                    //console.log(res.data)
+                    setSubjects(res.data);
+                    setHasloaded(true);
+                    //console.log(res.data);
+                }).catch(function (error) {
+            });
+        }
+        constructor();
+    },[])
+
+
+    if(!hasLoaded) return null;
 
     return(
-
-        <View>
-            <Text>test</Text>
+        <View style={styleSubjectList.container}>
+            <TouchableOpacity
+                // onPress={() => { navigation.navigate('AddSubject') }}
+                onPress={() => console.log("addSubj")}
+                style={{
+                    borderWidth:1,
+                    borderColor:'rgba(0,0,0,0.2)',
+                    top:580,
+                    alignItems:'center',
+                    justifyContent:'center',
+                    width:40,
+                    height:40,
+                    backgroundColor:'#212521',
+                    borderRadius:50,
+                    zIndex: 1
+                }}
+            >
+                <Ionicons name="add-outline" size={30} color="#ffff"/>
+            </TouchableOpacity>
+            <SafeAreaView style={{justifyContent: 'center',}}>
+                <FlatList
+                    style={{flex:1, marginTop: StatusBar.currentHeight || 0,}}
+                    data={subjects}
+                    renderItem={ ({item}) => {
+                        return <Subject subject={item}/>
+                    }}
+                    keyExtractor={ subject => subject.id }
+                />
+            </SafeAreaView>
         </View>
     )
 }
