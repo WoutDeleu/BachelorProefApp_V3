@@ -1,9 +1,21 @@
-import { StyleSheet } from 'react-native';
+import {StatusBar, StyleSheet} from 'react-native';
 
 const styleSubjectList =  StyleSheet.create({
     container: {
         justifyContent: 'center',
         alignItems:"center"
+    },
+    plusbutton: {
+        borderWidth:1,
+        borderColor:'rgba(0,0,0,0.2)',
+        top:580,
+        alignItems:'center',
+        justifyContent:'center',
+        width:40,
+        height:40,
+        backgroundColor:'#212521',
+        borderRadius:50,
+        zIndex: 1
     },
     view: {
         flex: 1,

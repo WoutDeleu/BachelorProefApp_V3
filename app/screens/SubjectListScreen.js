@@ -20,11 +20,14 @@ import styleSubjectList from "../styles/styleSubjectList";
 import backendURL from "../backendURL";
 import getFromStore from "../functions/getFromStore";
 
+import {BottomTabBarHeightContext, useBottomTabBarHeight} from '@react-navigation/bottom-tabs';
+
+
 function  SubjectListScreen({navigation}) {
     const [subjects, setSubjects] = useState([]);
     const [details, setDetails] = useState([]);
     const [hasLoaded, setHasloaded] = useState(false);
-
+    const tabBarHeight = useBottomTabBarHeight();
 
 
     React.useEffect(()=> {
@@ -56,31 +59,24 @@ function  SubjectListScreen({navigation}) {
     },[])
 
 
-    if(!hasLoaded) return null;
+    // if(!hasLoaded) return null;
 
     return(
         <View style={styleSubjectList.container}>
                 <TouchableOpacity
                     // onPress={() => { navigation.navigate('AddSubject') }}
                     onPress={() => console.log("addSubj")}
-                    style={{
-                        borderWidth:1,
-                        borderColor:'rgba(0,0,0,0.2)',
-                        top:580,
-                        alignItems:'center',
-                        justifyContent:'center',
-                        width:40,
-                        height:40,
-                        backgroundColor:'#212521',
-                        borderRadius:50,
-                        zIndex: 1
-                    }}
+                    style={styleSubjectList.plusbutton}
                 >
                     <Ionicons name="add-outline" size={30} color="#ffff"/>
                 </TouchableOpacity>
             <SafeAreaView style={{justifyContent: 'center',}}>
                 <FlatList
-                    style={{flex:1, marginTop: StatusBar.currentHeight || 0,}}
+                    style={{
+                        flex:1,
+                        marginTop: StatusBar.currentHeight || 0,
+                        marginBottom: tabBarHeight+10
+                    }}
                     data={subjects}
                     renderItem={ ({item}) => {
                         return <Subject subject={item}/>
