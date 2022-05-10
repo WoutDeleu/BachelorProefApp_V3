@@ -18,6 +18,7 @@ import refreshToken from "../functions/refreshToken";
 import Subject from "../functions/SubjectLoaders/Subject";
 import styleSubjectList from "../styles/styleSubjectList";
 import backendURL from "../backendURL";
+import getFromStore from "../functions/getFromStore";
 
 function  SubjectListScreen({navigation}) {
     const [subjects, setSubjects] = useState([]);
@@ -30,6 +31,8 @@ function  SubjectListScreen({navigation}) {
         const constructor = async () => {
             await refreshToken();
             let token = await getAccessToken();
+            let ownId = await getFromStore("ownId")
+            console.log("ownId: " + ownId)
             let axios = require('axios');
 
             let config = {
@@ -42,7 +45,7 @@ function  SubjectListScreen({navigation}) {
             };
             axios(config)
                 .then(function (res) {
-                    console.log(res.data)
+                    //console.log(res.data)
                     setSubjects(res.data);
                     setHasloaded(true);
                     //console.log(res.data);
