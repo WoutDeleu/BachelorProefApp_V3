@@ -11,8 +11,8 @@ import styleSubjectList from "../../styles/styleSubjectList";
 import Pdf from "./SubjectElements/Pdf";
 
 const Subject = ({subject}) => {
-    console.log(subject.id)
-    console.log(subject.name)
+    // console.log(subject.id)
+    // console.log(subject.name)
     return(
         <View style={styleSubjectList.subjectTotalBlock}>
             <Hart subject={subject}/>

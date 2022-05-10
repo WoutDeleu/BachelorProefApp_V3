@@ -37,13 +37,9 @@ const FavoriteSubject = ({subject}) => {
 
             axios(config)
                 .then(function (response) {
-                    setFavourite(response.data.favouriteSubjects)
-                    // console.log(response.data.favouriteSubjects)
-                }).then(() => {
-                    for (let i = 0; i < favourite.length; i++) {
-                        if (favourite[i].id === subject.id) {
-                            setFav(true)
-                        }
+                    // setFavourite(response.data.favouriteSubjects)
+                    for(let i = 0; i<response.data.favouriteSubjects.length; i++) {
+                        if(response.data.favouriteSubjects[i].id === subject.id) setFav(true)
                     }
                 })
                 .catch(function (error) {

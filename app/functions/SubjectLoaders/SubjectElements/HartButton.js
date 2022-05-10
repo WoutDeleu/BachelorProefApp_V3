@@ -40,16 +40,14 @@ const Hart = ({subject}) => {
 
             axios(config)
                 .then(function (response) {
-                    setFavourite(response.data.favouriteSubjects)
-                }).then(() => {
-                    for(let i = 0; i<favourite.length; i++) {
-                        if(favourite[i].id === subject.id) setLiked(true)
+                    // setFavourite(response.data.favouriteSubjects)
+                    for(let i = 0; i<response.data.favouriteSubjects.length; i++) {
+                        if(response.data.favouriteSubjects[i].id === subject.id) setLiked(true)
                     }
                 })
         }
         constructor().then(() => {
             setHasloaded(true);
-            console.log("done");
         }).catch(e=>console.log(e));
     },[])
 
@@ -65,7 +63,7 @@ const Hart = ({subject}) => {
             addToFavorites(subject,ownId,token);
         }
     }
-
+    // console.log(favourite)
     if(!hasloaded) return null;
     else{
         return (

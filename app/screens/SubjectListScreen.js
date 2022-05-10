@@ -47,7 +47,6 @@ function  SubjectListScreen({navigation}) {
             };
             axios(config)
                 .then(function (res) {
-                    console.log(res.data)
                     setSubjects(res.data);
                     setHasloaded(true);
                     //console.log(res.data);
