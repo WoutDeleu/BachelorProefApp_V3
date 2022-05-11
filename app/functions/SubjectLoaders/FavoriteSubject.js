@@ -43,7 +43,7 @@ const FavoriteSubject = ({subject}) => {
                     }
                 })
                 .catch(function (error) {
-                    console.log(error);
+                    console.log(error );
                 });
         }
         constructor()
