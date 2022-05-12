@@ -11,6 +11,8 @@ export const AuthContext = createContext();
 
 export const AuthProvider = ({children}) => {
     const [userInfo, setUserInfo] = useState({});
+    const [expTime_at, setExpTime_at] = useState('');
+    const [expTime_rt, setExpTime_rt] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [splashLoading, setSplashLoading] = useState(false);
     const [errMsg, setErrMsg] = useState('');
@@ -29,26 +31,28 @@ export const AuthProvider = ({children}) => {
         };
         axios(config).then(res => {
             let userInfo = res.data;
-            console.log(userInfo);
+
+            const time = new Date().getTime();//getTime gives the amount of millieseconds that have passed since January 1st 1970
+            const access_token_expired = new Date(time + 10 * 60 * 1000).getTime();
+            const refresh_token_expired = new Date(time + 24 * 60 * 60 * 1000).getTime();
+
             setUserInfo(userInfo);
-            SecureStore.setItemAsync('userInfo', JSON.stringify(userInfo));
+            setExpTime_at(access_token_expired);
+            setExpTime_rt(refresh_token_expired)
             setIsLoading(false);
 
             const decoded = jwt_decode(res.data.access_token);
             const roles = decoded.roles;
             console.log("ownId: " + res.data.id)
 
+            SecureStore.setItemAsync('userInfo', JSON.stringify(userInfo));
             SecureStore.setItemAsync("access_token", JSON.stringify(res.data.access_token));
             SecureStore.setItemAsync("refresh_token", JSON.stringify(res.data.refresh_token));
             SecureStore.setItemAsync("ownId", JSON.stringify(res.data.id))
             // SecureStore.setItemAsync("role", JSON.stringify(roles));
 
-            const time = new Date().getTime();//getTime gives the amount of millieseconds that have passed since January 1st 1970
-            const access_token_expired = new Date(time + 10 * 60 * 1000).getTime();
-            const refresh_token_expired = new Date(time + 24 * 60 * 60 * 1000).getTime();
             SecureStore.setItemAsync("access_token_expired", JSON.stringify(access_token_expired));
             SecureStore.setItemAsync("refresh_token_expired", JSON.stringify(refresh_token_expired));
-
         })
             .catch(e => {
                 console.log(`login error ${e}`);
@@ -105,8 +109,17 @@ export const AuthProvider = ({children}) => {
             let userInfo = await SecureStore.getItemAsync('userInfo');
             userInfo = JSON.parse(userInfo);
 
+            let accessTokenExp = await SecureStore.getItemAsync("access_token_expired")
+            let refreshTokenExp = await SecureStore.getItemAsync("refresh_token_expired")
+
             if (userInfo) {
                 setUserInfo(userInfo);
+            }
+            if(refreshTokenExp) {
+                setExpTime_rt(refreshTokenExp)
+            }
+            if(accessTokenExp) {
+                setExpTime_at(accessTokenExp)
             }
 
             setSplashLoading(false);
@@ -126,6 +139,8 @@ export const AuthProvider = ({children}) => {
                 isLoading,
                 userInfo,
                 splashLoading,
+                expTime_at,
+                expTime_rt,
                 login,
                 logout,
             }}>
