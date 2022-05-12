@@ -1,6 +1,4 @@
-import React, { useState, useReducer } from "react";
-import { createStore } from 'redux';
-import { View,Text } from "react-native";
+import React, {useState, useReducer, useContext} from "react";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import LoginScreen from "../screens/LoginScreen";
 import * as SecureStore from 'expo-secure-store';
@@ -8,11 +6,18 @@ import axios from "axios";
 import Tabs from "./Tabs";
 import ForgotPasswordScreen from "../screens/ForgotPassword";
 import backendURL from "../backendURL";
+import {AuthContext} from "../Authentication/AuthProvider";
+import SplashScreen from "../screens/SplashScreen";
+import getIsLoggedIn from "../functions/getIsLoggedIn";
+
 
 const AuthStack = () => {
     const AuthStack = createNativeStackNavigator();
     const [isSignedIn, setSignedIn] = useState();
     const [loading, setLoading] = useState();
+    const {userInfo, splashLoading} = useContext(AuthContext);
+    const [expTime_at, setExpTime_at] = useState('');
+    const [expTime_rt, setExpTime_rt] = useState('')
 
     const url_refresh = backendURL + "/authentication/token/refresh"
     React.useEffect(() => {
@@ -22,18 +27,14 @@ const AuthStack = () => {
         // console.log(t);
         // console.log(time);
 
-        let expTime_at = await SecureStore.getItemAsync('access_token_expired');
-        let expTime_rt = await SecureStore.getItemAsync('refresh_token_expired');
+        const expTime_at = await SecureStore.getItemAsync('access_token_expired');
+        const expTime_rt = await SecureStore.getItemAsync('refresh_token_expired');
         let curTime = new Date().getTime();
-
-        if(t === null) setSignedIn(false);
-        else {
-          if(expTime_at>curTime) {
-            setSignedIn(true);
+        if(expTime_at>curTime) {
             console.log("access token is geldig");
             console.log(t);
-          }
-          else {
+        }
+        else {
             if(expTime_rt>curTime) {
               console.log("refresh tokeken is geldig");
               let config = {
@@ -51,30 +52,29 @@ const AuthStack = () => {
                 console.log(res.data.access_token)
               }).catch(function (error) {
               });
-              setSignedIn(true);
             }
             else {
-              setSignedIn(false);
               console.log("Access token en refresh token zijn ongeldig")
             }
           }
         }
-      }
       loggedIn()
     }, [])
 
 
-    if (isSignedIn === undefined) {
-      //Maak hier een loading van
-      return null;
-    }
-
     function rendFunc() {
+        console.log("acccess token: "  + userInfo.access_token);
       return(
           <AuthStack.Navigator>
-            {isSignedIn? (
+              {splashLoading ? (
+                  <AuthStack.Screen
+                      name="Splash Screen"
+                      component={SplashScreen}
+                      options={{headerShown: false}}
+                  />
+              ): userInfo.access_token !== null || !getIsLoggedIn(userInfo.access_token, userInfo.refresh_token, expired)? (
                 <AuthStack.Screen name="Tabs" component={Tabs} options={{headerShown : false}}/>
-            ) : (
+              ) : (
                 <>
                   <AuthStack.Screen
                       name = "LoginScreen"

@@ -1,13 +1,15 @@
 import {Button, Text, View, StyleSheet, TouchableOpacity, Image} from "react-native";
-import logOut from "../functions/logOut";
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import styleLoginLogout from "../styles/styleLoginLogout";
 import getFromStore from "../functions/getFromStore";
 import refreshToken from "../functions/refreshToken";
 import getAccessToken from "../functions/getAccessToken";
-import axios from "axios";
 import backendURL from "../backendURL";
 import removeFirstAndLast from "../functions/removeFirstAndLast";
+// import logOut from "../functions/logOut";
+
+import Spinner from "react-native-loading-spinner-overlay";
+import {AuthContext} from "../Authentication/AuthProvider";
 
 
 function SettingsScreen() {
@@ -21,6 +23,7 @@ function SettingsScreen() {
     const [favoriteSubjects, setFavoriteSubjects] = useState([]);
     const [preferredSubjects, setPrefferedSubjects] = useState([]);
     const [targetAudience, setTargetAudience] = useState([]);
+    const {userInfo, isLoading, logout} = useContext(AuthContext);
 
     React.useEffect(()=> {
         const constructor = async () => {
@@ -63,6 +66,7 @@ function SettingsScreen() {
     // if(!hasLoaded) return null;
     return(
         <View style={styleLoginLogout.basicContainer}>
+            <Spinner visible={isLoading}/>
             <Image
                 source={require("../props/ProfilePic.png")}
                 style={{width: 80, height: 80, borderRadius: 80/ 2}}
@@ -116,7 +120,7 @@ function SettingsScreen() {
                 <Text style={styleLoginLogout.prop}>{targetAudience}</Text>
             </View>
 
-            <TouchableOpacity style={styleLoginLogout.loginBtn} onPress={logOut}>
+            <TouchableOpacity style={styleLoginLogout.loginBtn} onPress={()=>logout()}>
                 <Text style={styleLoginLogout.loginText}>LOGOUT</Text>
             </TouchableOpacity>
         </View>

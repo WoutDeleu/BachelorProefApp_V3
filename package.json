@@ -30,12 +30,14 @@
     "react-native": "0.64.3",
     "react-native-elements": "^3.4.2",
     "react-native-gesture-handler": "~2.1.0",
+    "react-native-loading-spinner-overlay": "^3.0.0",
     "react-native-read-more-text": "^1.1.2",
     "react-native-vector-icons": "^9.1.0",
     "react-native-web": "0.17.1",
     "react-navigation-material-bottom-tabs": "^2.3.5",
     "react-redux": "^8.0.1",
     "redux": "^4.2.0",
+    "redux-devtools-extension": "^2.13.9",
     "styled-components": "^5.3.5"
   },
   "devDependencies": {

@@ -1,16 +1,17 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import AuthStack from './app/routes/AuthStack';
-import { Store } from "./app/routes/LoginContext/Store";
+import {AuthProvider} from "./app/Authentication/AuthProvider";
 
 
 class App extends React.Component{
   render() {
     return (
-        <NavigationContainer>
-            <AuthStack/>
-        </NavigationContainer>
-
+        <AuthProvider>
+            <NavigationContainer>
+                <AuthStack/>
+            </NavigationContainer>
+        </AuthProvider>
     );
   }
 }
