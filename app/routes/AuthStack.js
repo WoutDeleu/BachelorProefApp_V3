@@ -72,7 +72,7 @@ const AuthStack = () => {
                       component={SplashScreen}
                       options={{headerShown: false}}
                   />
-              ): userInfo.access_token !== null || !getIsLoggedIn(userInfo.access_token, userInfo.refresh_token, expired)? (
+              ): userInfo.access_token? /*|| !getIsLoggedIn(userInfo.access_token, userInfo.refresh_token)?*/ (
                 <AuthStack.Screen name="Tabs" component={Tabs} options={{headerShown : false}}/>
               ) : (
                 <>
