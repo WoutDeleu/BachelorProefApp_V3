@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="20ec68f9-87e4-453a-b36d-f4f38862cd72" name="Changes" comment="ROLES">
+      <change afterPath="$PROJECT_DIR$/app/Authentication/Encryption.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Authentication/SECRET_KEY.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Authentication/AuthProvider.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Authentication/AuthProvider.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/backendURL.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/backendURL.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/functions/ValidateEmail.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/functions/ValidateEmail.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="27i6zoUKiOjwddgW0c6aT2BCshL" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/screens" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2021.2.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\woutd\Bachelorproef - Mastertool\BachelorProefApp_V3\BachelorProefApp_V3\app\screens" />
+      <recent name="C:\Users\woutd\Bachelorproef - Mastertool\BachelorProefApp_V3\BachelorProefApp_V3\assets" />
+      <recent name="C:\Users\woutd\Bachelorproef - Mastertool\BachelorProefApp_V3\BachelorProefApp_V3" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\woutd\Bachelorproef - Mastertool\BachelorProefApp_V3\BachelorProefApp_V3\app\functions\SubjectLoaders\SubjectElements" />
+      <recent name="C:\Users\woutd\Bachelorproef - Mastertool\BachelorProefApp_V3\BachelorProefApp_V3\app\functions\SubjectLoaders\ReadMore" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="20ec68f9-87e4-453a-b36d-f4f38862cd72" name="Changes" comment="" />
+      <created>1649790824104</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1649790824104</updated>
+      <workItem from="1649790825454" duration="638000" />
+      <workItem from="1649791511121" duration="1369000" />
+      <workItem from="1649793197930" duration="1348000" />
+      <workItem from="1649831305525" duration="6110000" />
+      <workItem from="1650005942029" duration="8670000" />
+      <workItem from="1650283102461" duration="7025000" />
+      <workItem from="1650351079639" duration="1018000" />
+      <workItem from="1650353260593" duration="7439000" />
+      <workItem from="1650360841261" duration="873000" />
+      <workItem from="1650379450640" duration="1052000" />
+      <workItem from="1650442163588" duration="1582000" />
+      <workItem from="1650445185520" duration="31000" />
+      <workItem from="1650954585020" duration="8991000" />
+      <workItem from="1651507557915" duration="18157000" />
+      <workItem from="1651649494906" duration="6801000" />
+      <workItem from="1651732775637" duration="2501000" />
+      <workItem from="1651848762796" duration="15852000" />
+      <workItem from="1651992841686" duration="14879000" />
+      <workItem from="1652017654238" duration="5422000" />
+      <workItem from="1652030043888" duration="990000" />
+      <workItem from="1652082721688" duration="702000" />
+      <workItem from="1652102453311" duration="29919000" />
+      <workItem from="1652257324044" duration="6213000" />
+      <workItem from="1652337844857" duration="12833000" />
+      <workItem from="1652440074677" duration="15211000" />
+    </task>
+    <task id="LOCAL-00001" summary="teset">
+      <created>1649791524619</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1649791524619</updated>
+    </task>
+    <task id="LOCAL-00002" summary="setup">
+      <created>1649792666736</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1649792666736</updated>
+    </task>
+    <task id="LOCAL-00003" summary="ErrorFix">
+      <created>1649866914844</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1649866914844</updated>
+    </task>
+    <task id="LOCAL-00004" summary="ErrorFix">
+      <created>1649866927269</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1649866927269</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Poging tot subjectList">
+      <created>1649871680148</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1649871680148</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Poging tot subjectList">
+      <created>1650035630979</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1650035630979</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Subjectlis view is afgewerkt">
+      <created>1650445210484</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1650445210484</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Subjectlis view is afgewerkt">
+      <created>1651563052337</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1651563052337</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Checkpoint">
+      <created>1651850840364</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1651850840365</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Heroku">
+      <created>1651851633580</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1651851633580</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Heroku">
+      <created>1651851883097</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1651851883097</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Opkuis">
+      <created>1651860677270</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1651860677270</updated>
+    </task>
+    <task id="LOCAL-00013" summary="View gefixt">
+      <created>1651863478038</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1651863478038</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Poging 445646456 tot login">
+      <created>1651868692213</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1651868692213</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Checkpoint">
+      <created>1652000379599</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1652000379599</updated>
+    </task>
+    <task id="LOCAL-00016" summary="saveOwnID works">
+      <created>1652002352977</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1652002352977</updated>
+    </task>
+    <task id="LOCAL-00017" summary="saveOwnID works">
+      <created>1652002375591</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1652002375591</updated>
+    </task>
+    <task id="LOCAL-00018" summary="getFrom Store works">
+      <created>1652002783652</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1652002783652</updated>
+    </task>
+    <task id="LOCAL-00019" summary="getFrom Store works">
+      <created>1652002850364</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1652002850364</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Get OwnId fully functional">
+      <created>1652003793885</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1652003793885</updated>
+    </task>
+    <task id="LOCAL-00021" summary="layout settingscreen">
+      <created>1652030438026</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1652030438026</updated>
+    </task>
+    <task id="LOCAL-00022" summary="backendURL global par">
+      <created>1652103775100</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1652103775100</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Favorites werken">
+      <created>1652170355170</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1652170355170</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Settings zo goed als af">
+      <created>1652172775386</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1652172775387</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Like functie is af">
+      <created>1652175118196</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1652175118196</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Nog 1 bug in like functie">
+      <created>1652175643386</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1652175643386</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Nog 1 bug in like functie">
+      <created>1652186531518</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1652186531518</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Bug in like">
+      <created>1652207221103</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1652207221103</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Favourites werkt volledig">
+      <created>1652208802001</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1652208802001</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Company Popup beginsel">
+      <created>1652293203256</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1652293203256</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Login Gefixt -&gt; Enkel nog expire time!">
+      <created>1652365480710</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1652365480710</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Login Gefixt -&gt; Enkel nog expire time!">
+      <created>1652365610567</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1652365610567</updated>
+    </task>
+    <task id="LOCAL-00033" summary="LOGIN VOLLEDIG GEFIXT">
+      <created>1652369517342</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1652369517342</updated>
+    </task>
+    <task id="LOCAL-00034" summary="ROLES -&gt; Save State">
+      <created>1652444024604</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1652444024604</updated>
+    </task>
+    <task id="LOCAL-00035" summary="ROLES">
+      <created>1652448439641</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1652448439641</updated>
+    </task>
+    <task id="LOCAL-00036" summary="ROLES">
+      <created>1652456044121</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1652456044121</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="setup" />
+    <MESSAGE value="ErrorFix" />
+    <MESSAGE value="Poging tot subjectList" />
+    <MESSAGE value="Subjectlis view is afgewerkt" />
+    <MESSAGE value="Heroku" />
+    <MESSAGE value="Opkuis" />
+    <MESSAGE value="View gefixt" />
+    <MESSAGE value="Poging 445646456 tot login" />
+    <MESSAGE value="Checkpoint" />
+    <MESSAGE value="saveOwnID works" />
+    <MESSAGE value="getFrom Store works" />
+    <MESSAGE value="Get OwnId fully functional" />
+    <MESSAGE value="layout settingscreen" />
+    <MESSAGE value="backendURL global par" />
+    <MESSAGE value="Favorites werken" />
+    <MESSAGE value="Settings zo goed als af" />
+    <MESSAGE value="Like functie is af" />
+    <MESSAGE value="Nog 1 bug in like functie" />
+    <MESSAGE value="Bug in like" />
+    <MESSAGE value="Favourites werkt volledig" />
+    <MESSAGE value="Company Popup beginsel" />
+    <MESSAGE value="Login Gefixt -&gt; Enkel nog expire time!" />
+    <MESSAGE value="LOGIN VOLLEDIG GEFIXT" />
+    <MESSAGE value="ROLES -&gt; Save State" />
+    <MESSAGE value="ROLES" />
+    <option name="LAST_COMMIT_MESSAGE" value="ROLES" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/app/routes/SubjectStack.js</url>
+          <line>18</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/app/functions/getRole.js</url>
+          <line>11</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/app/backendURL.js</url>
+          <line>1</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/app/functions/SubjectLoaders/FavoriteSubject.js</url>
+          <line>51</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
