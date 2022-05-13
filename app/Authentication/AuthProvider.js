@@ -5,12 +5,14 @@ import BackendURL from "../backendURL";
 import {Popup} from "popup-ui";
 import qs from "qs";
 import jwt_decode from 'jwt-decode';
+import backendURL from "../backendURL";
 
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({children}) => {
     const [userInfo, setUserInfo] = useState({});
+    const [roles,setRoles] = useState({});
     const [expTime_at, setExpTime_at] = useState('');
     const [expTime_rt, setExpTime_rt] = useState('');
     const [isLoading, setIsLoading] = useState(false);
@@ -43,18 +45,17 @@ export const AuthProvider = ({children}) => {
 
             const decoded = jwt_decode(res.data.access_token);
             const roles = decoded.roles;
-            console.log("ownId: " + res.data.id)
 
             SecureStore.setItemAsync('userInfo', JSON.stringify(userInfo));
             SecureStore.setItemAsync("access_token", JSON.stringify(res.data.access_token));
             SecureStore.setItemAsync("refresh_token", JSON.stringify(res.data.refresh_token));
-            SecureStore.setItemAsync("ownId", JSON.stringify(res.data.id))
-            // SecureStore.setItemAsync("role", JSON.stringify(roles));
+            SecureStore.setItemAsync("ownId", JSON.stringify(res.data.id));
+            SecureStore.setItemAsync("roles" , JSON.stringify(roles));
 
             SecureStore.setItemAsync("access_token_expired", JSON.stringify(access_token_expired));
             SecureStore.setItemAsync("refresh_token_expired", JSON.stringify(refresh_token_expired));
-        })
-            .catch(e => {
+            }
+        ).catch(e => {
                 console.log(`login error ${e}`);
                 setIsLoading(false);
                 if(e.response?.status === 401) {
@@ -84,6 +85,7 @@ export const AuthProvider = ({children}) => {
                     })
                 }
             });
+
     };
 
     const logout = () => {
@@ -94,7 +96,7 @@ export const AuthProvider = ({children}) => {
             SecureStore.deleteItemAsync("refresh_token"),
             SecureStore.deleteItemAsync("access_token_expired"),
             SecureStore.deleteItemAsync("refresh_token_expired"),
-            SecureStore.deleteItemAsync("role"),
+            SecureStore.deleteItemAsync("roles"),
             SecureStore.deleteItemAsync("ownId"),
             SecureStore.deleteItemAsync("userInfo"))
         setUserInfo({});
@@ -111,6 +113,7 @@ export const AuthProvider = ({children}) => {
 
             let accessTokenExp = await SecureStore.getItemAsync("access_token_expired")
             let refreshTokenExp = await SecureStore.getItemAsync("refresh_token_expired")
+            let roles = await SecureStore.getItemAsync("roles")
 
             if (userInfo) {
                 setUserInfo(userInfo);
@@ -120,6 +123,9 @@ export const AuthProvider = ({children}) => {
             }
             if(accessTokenExp) {
                 setExpTime_at(accessTokenExp)
+            }
+            if(roles) {
+                setRoles(roles)
             }
 
             setSplashLoading(false);
@@ -143,6 +149,7 @@ export const AuthProvider = ({children}) => {
                 expTime_rt,
                 login,
                 logout,
+                roles,
             }}>
             {children}
         </AuthContext.Provider>

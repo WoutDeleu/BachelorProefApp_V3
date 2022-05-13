@@ -57,8 +57,6 @@ function SettingsScreen() {
                 .catch(function (error) {
                     console.log(error);
                 });
-
-            //setHasloaded(true);
         }
         constructor();
     },[])
