@@ -14,13 +14,13 @@ import {AuthContext} from "../../../Authentication/AuthProvider";
 import isRole from "../isRole";
 
 const Hart = ({subject}) => {
+    const { userInfo } = useContext(AuthContext);
     const [liked, setLiked] = useState(false);
     const [hasloaded,setHasloaded] = useState(false);
     const [ownId, setOwnId] = useState('');
     const [token, setToken] = useState('');
     const [favourite, setFavourite] = useState([]);
     const favouriteId = [];
-    const {roles} = useContext(AuthContext)
 
     React.useEffect(()=> {
         const constructor = async () => {
@@ -67,7 +67,7 @@ const Hart = ({subject}) => {
         }
     }
     // console.log(favourite)
-    if(!hasloaded || isRole("ROLE_COORDINATOR") || isRole("ROLE_PROMOTOR") || isRole("ROLE_CONTACT") || isRole("ROLE_ADMIN")) return null;
+    if(!hasloaded || isRole("ROLE_COORDINATOR",userInfo) || isRole("ROLE_PROMOTOR",userInfo) || isRole("ROLE_CONTACT",userInfo) || isRole("ROLE_ADMIN",userInfo)) return null;
     else{
         return (
             <Pressable style={styleSubjectList.heartIcon} onPress={ () => checkFavorite()}>

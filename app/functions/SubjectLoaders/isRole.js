@@ -3,8 +3,7 @@ import {useContext} from "react";
 import {AuthContext} from "../../Authentication/AuthProvider";
 import jwt_decode from "jwt-decode";
 
-const isRole = (r)=>{
-    const { userInfo } = useContext(AuthContext);
+const isRole = (r,userInfo)=>{
 
     let roles = null;
     if(userInfo.access_token!=='undefined'){
