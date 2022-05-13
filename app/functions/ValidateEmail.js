@@ -1,5 +1,5 @@
 const validateEmail = (text) => {
-    console.log(text);
+    // console.log(text);
     let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
     if (reg.test(text) === false) {
         console.log("Email is Not Correct");

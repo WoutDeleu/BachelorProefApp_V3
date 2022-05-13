@@ -6,6 +6,7 @@ import {Popup} from "popup-ui";
 import qs from "qs";
 import jwt_decode from 'jwt-decode';
 import backendURL from "../backendURL";
+import {decrypt, encrypt} from "./Encryption";
 
 
 export const AuthContext = createContext();
@@ -22,6 +23,10 @@ export const AuthProvider = ({children}) => {
     const login = (email, password) => {
         setIsLoading(true);
         const url_login = BackendURL + "/authentication/login";
+
+        password = encrypt(password);
+        console.log(password);
+
         const data = qs.stringify({email, password});
         const config = {
             method: 'post',
