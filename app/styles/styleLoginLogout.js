@@ -67,8 +67,8 @@ const styleLoginLogout =  StyleSheet.create({
         borderBottomWidth: StyleSheet.hairlineWidth,
         alignSelf:'center',
         width: "85%",
-        marginTop: 15,
-        marginBottom: 10,
+        marginTop: 20,
+        marginBottom: 20,
 
     }
 });

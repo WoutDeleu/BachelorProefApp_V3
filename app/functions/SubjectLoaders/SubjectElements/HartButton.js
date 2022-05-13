@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useContext, useState} from "react";
 import { Pressable } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import styleSubjectList from "../../../styles/styleSubjectList";
@@ -10,6 +10,8 @@ import removeFromFavorites from "./removeFromFavorites";
 import backendURL from "../../../backendURL";
 import axios from "axios";
 import removeFirstAndLast from "../../removeFirstAndLast";
+import {AuthContext} from "../../../Authentication/AuthProvider";
+import isRole from "../isRole";
 
 const Hart = ({subject}) => {
     const [liked, setLiked] = useState(false);
@@ -18,6 +20,7 @@ const Hart = ({subject}) => {
     const [token, setToken] = useState('');
     const [favourite, setFavourite] = useState([]);
     const favouriteId = [];
+    const {roles} = useContext(AuthContext)
 
     React.useEffect(()=> {
         const constructor = async () => {
@@ -64,13 +67,13 @@ const Hart = ({subject}) => {
         }
     }
     // console.log(favourite)
-    if(!hasloaded) return null;
+    if(!hasloaded || isRole("ROLE_COORDINATOR") || isRole("ROLE_PROMOTOR") || isRole("ROLE_CONTACT") || isRole("ROLE_ADMIN")) return null;
     else{
         return (
             <Pressable style={styleSubjectList.heartIcon} onPress={ () => checkFavorite()}>
                 <MaterialCommunityIcons
                     name={liked ? "heart" : "heart-outline"}
-                    size={20}
+                    size={20}s
                     color={liked ? "red" : "white"}
                 />
             </Pressable>

@@ -23,7 +23,9 @@ function SettingsScreen() {
     const [favoriteSubjects, setFavoriteSubjects] = useState([]);
     const [preferredSubjects, setPrefferedSubjects] = useState([]);
     const [targetAudience, setTargetAudience] = useState([]);
+    const [stringRoles, setStringRoles] = useState("");
     const {userInfo, isLoading, logout} = useContext(AuthContext);
+    const roles_names = [];
 
     React.useEffect(()=> {
         const constructor = async () => {
@@ -43,7 +45,7 @@ function SettingsScreen() {
 
             axios(config)
                 .then(function (response) {
-                    console.log(JSON.stringify(response.data));
+                    // console.log(JSON.stringify(response.data));
                     setLastName(response.data.lastName);
                     setFirstName(response.data.firstName);
                     setEmail(response.data.email);
@@ -53,6 +55,16 @@ function SettingsScreen() {
                     setRoles(response.data.roles)
                     setPrefferedSubjects(response.data.preferredSubjects)
                     setTargetAudience(response.data.targetAudience)
+                    for(let i =0; i<response.data.roles.length; i++) {
+                        roles_names.push(response.data.roles[i].name);
+                    }
+                    let stringRoles="";
+                    for(let i = 0; i<response.data.roles.length; i++) {
+                        if(i===0) stringRoles = response.data.roles[i].name;
+                        else stringRoles = stringRoles + ", \n" + response.data.roles[i].name;
+                        if(i===response.data.roles.length-1) setStringRoles(stringRoles)
+                    }
+
                 })
                 .catch(function (error) {
                     console.log(error);
@@ -61,6 +73,11 @@ function SettingsScreen() {
         constructor();
     },[])
 
+    const joinedRoles = () => {
+
+        return stringRoles;
+    }
+    const stringRolesDef = joinedRoles();
     // if(!hasLoaded) return null;
     return(
         <View style={styleLoginLogout.basicContainer}>
@@ -101,7 +118,7 @@ function SettingsScreen() {
 
             <View style={styleLoginLogout.infoLine}>
                 <Text style={styleLoginLogout.tag}>{"\t\t"} Roles: </Text>
-                <Text style={styleLoginLogout.prop}>{roles.length}</Text>
+                <Text style={styleLoginLogout.prop}>{stringRolesDef}</Text>
             </View>
 
             <View style = {styleLoginLogout.viewLine}/>

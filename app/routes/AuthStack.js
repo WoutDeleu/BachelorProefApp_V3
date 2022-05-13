@@ -16,7 +16,7 @@ const AuthStack = () => {
     const AuthStack = createNativeStackNavigator();
     const [isSignedIn, setSignedIn] = useState();
     const [loading, setLoading] = useState();
-    const {expTime_at, expTime_rt, userInfo, splashLoading, roles} = useContext(AuthContext);
+    const { userInfo, splashLoading } = useContext(AuthContext);
 
     return (
         <AuthStack.Navigator>
