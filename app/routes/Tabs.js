@@ -4,7 +4,7 @@
 import * as React from 'react';
 import {StyleSheet, View} from "react-native";
 import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
-import ActionScreen from "../screens/ActionScreen";
+import ActionStack from "../screens/ActionScreen/ActionStack";
 import FavoriteScreen from "../screens/FavoriteScreen";
 import SubjectListScreen from "../screens/SubjectListScreen";
 import SettingsScreen from "../screens/SettingsScreen";
@@ -33,7 +33,7 @@ const Tabs = () => {
         >
             <Tab.Screen
                 name="Actions"
-                component={ActionScreen}
+                component={ActionStack}
                 options={({route}) => ({
                     tabBarIcon: ({color, size}) => (
                         <Ionicons name="checkmark-circle-outline" color={color} size={size} />

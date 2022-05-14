@@ -56,6 +56,7 @@ const styleLoginLogout =  StyleSheet.create({
         fontWeight: "bold",
         fontFamily: "Roboto"
     },
+
     prop:{
         position: 'absolute',
         left: 135,

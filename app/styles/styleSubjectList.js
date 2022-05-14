@@ -5,6 +5,13 @@ const styleSubjectList =  StyleSheet.create({
         justifyContent: 'center',
         alignItems:"center"
     },
+    containerAction: {
+        justifyContent: 'center',
+        alignItems:"center",
+        marginTop: StatusBar.currentHeight + 20|| 0,
+        // marginBottom: useBottomTabBarHeight()
+
+    },
     plusbutton: {
         borderWidth:1,
         borderColor:'rgba(0,0,0,0.2)',

@@ -11,7 +11,7 @@ import backendURL from "../../../backendURL";
 import axios from "axios";
 import removeFirstAndLast from "../../removeFirstAndLast";
 import {AuthContext} from "../../../Authentication/AuthProvider";
-import isRole from "../isRole";
+import isRole from "../../isRole";
 
 const Hart = ({subject}) => {
     const { userInfo } = useContext(AuthContext);

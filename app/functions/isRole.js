@@ -1,7 +1,8 @@
 import * as SecureStore from 'expo-secure-store';
 import {useContext} from "react";
-import {AuthContext} from "../../Authentication/AuthProvider";
+import {AuthContext} from "../Authentication/AuthProvider";
 import jwt_decode from "jwt-decode";
+
 
 const isRole = (r,userInfo)=>{
 
