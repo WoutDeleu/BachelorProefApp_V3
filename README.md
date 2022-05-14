@@ -1,6 +1,13 @@
 # BachelorProefApp_V3
 
-This project was created using React Native, using the Expo toolchain. 
+This project was created using React Native, using the Expo toolchain.
+
+## Description
+### Intro
+This is the mobile app version of the mastertool app ([Site - GithubLink](https://github.com/WannesVermeire/BachelorProefFrontend), [Backend - GithubLink](https://github.com/WannesVermeire/BachelorProefBackend)). It was created as a bachelor's thesis from three students industrial engineering, electronics - ICT at the KU Leuven, Technolgiecampus Gent. 
+
+### Functionallity
+It is an app used to help student choose their master's thesis, as well as to help the administrator, coördinators,... assign the theses, and keep a clear overview. The mobile application especially is designed to keep a clear overview! To communicate with the backend, axios is used to send requests! The communication is being done with JSON formats. 
 
 ## Usage
 
@@ -23,13 +30,7 @@ and run the app in development mode. You can choose your favorite way of emulati
 - Axios
 - CryptoJS
 
-## Description
-### Intro
-This is the mobile app version of the mastertool app ([Site - GithubLink](https://github.com/WannesVermeire/BachelorProefFrontend), [Backend - GithubLink](https://github.com/WannesVermeire/BachelorProefBackend)). It was created as a bachelor's thesis from three students industrial engineering, electronics - ICT at the KU Leuven, Technolgiecampus Gent. 
-
-### Functionallity
-It is an app used to help student choose their master's thesis, as well as to help the administrator, coördinators,... assign the theses, and keep a clear overview. The mobile application especially is designed to keep a clear overview! To communicate with the backend, axios is used to send requests! The communication is being done with JSON formats. 
-  
+ 
 ## Collaborators
 - Wannes Vermeiren
 - Toon Eeraerts
