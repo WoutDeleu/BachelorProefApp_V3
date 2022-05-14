@@ -24,8 +24,8 @@ export const AuthProvider = ({children}) => {
         setIsLoading(true);
         const url_login = BackendURL + "/authentication/login";
 
-        password = encrypt(password);
-        console.log(password);
+        //TODO => Encryptie aanzetten
+        // password = encrypt(password);
 
         const data = qs.stringify({email, password});
         const config = {
