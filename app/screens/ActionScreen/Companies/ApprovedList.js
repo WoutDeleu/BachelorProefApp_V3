@@ -20,11 +20,12 @@ import styleLoginLogout from "../../../styles/styleLoginLogout";
 import styleActions from "../../../styles/styleActions";
 import getRoles from "../../../functions/getRoles";
 import booleanToString from "../../../functions/booleanToString";
+import getFinalStudents from "../../../functions/getFinalStudents";
 
 function ApprovedList() {
     const [activeSections, setActiveSections] = useState([]);
     const [content, setContent] = useState([]);
-    const multipleSelect = false;
+    const multipleSelect = true;
 
     React.useEffect(()=> {
         const constructor = async () => {
@@ -92,10 +93,7 @@ function ApprovedList() {
                         <Text style={styleActions.prop}>{"\t\t"}{section.description}</Text>
                         {"\n"}
                         <Text style={styleActions.tag}> Contacts: </Text>
-                        <Text style={styleActions.prop}>{"\t\t"}{getRoles(section.contacts)}</Text>
-                        {"\n"}
-                        <Text style={styleActions.tag}> Approved: </Text>
-                        <Text style={styleActions.prop}>{"\t\t"}{booleanToString(section.approved)}</Text>
+                        <Text style={styleActions.prop}>{"\t\t"}{getFinalStudents(section.contacts)}</Text>
                     </Animatable.Text>
                 </Animatable.View>
             );

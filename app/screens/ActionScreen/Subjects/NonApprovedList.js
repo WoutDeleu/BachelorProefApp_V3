@@ -7,20 +7,19 @@ import {
     View,
     TouchableOpacity,
 } from 'react-native';
-import Constants from 'expo-constants';
 import * as Animatable from 'react-native-animatable';
-import Collapsible from 'react-native-collapsible';
 import Accordion from 'react-native-collapsible/Accordion';
 import refreshToken from "../../../functions/refreshToken";
 import getAccessToken from "../../../functions/getAccessToken";
-import getFromStore from "../../../functions/getFromStore";
 import backendURL from "../../../backendURL";
-import axios from "axios";
-import styleLoginLogout from "../../../styles/styleLoginLogout";
 import styleActions from "../../../styles/styleActions";
-import getRoles from "../../../functions/getRoles";
-import booleanToString from "../../../functions/booleanToString";
+import getPromotor from "../../../functions/getPromotor";
+import getCompanyName from "../../../functions/getCompanyName";
 
+function booleanToStringYet(hasPDF) {
+    if(hasPDF) return "Not present";
+    else return "Present";
+}
 function NonApprovedList() {
     const [activeSections, setActiveSections] = useState([]);
     const [content, setContent] = useState([]);
@@ -89,16 +88,10 @@ function NonApprovedList() {
                         <Text style={styleActions.prop}>{"\t\t"}{section.nrOfStudents}</Text>
                         {"\n"}
                         <Text style={styleActions.tag}> Company: </Text>
-                        <Text style={styleActions.prop}>{"\t\t"}{section.company}</Text>
-                        {"\n"}
-                        <Text style={styleActions.tag}> Final Students: </Text>
-                        <Text style={styleActions.prop}>{"\t\t"}{getRoles(section.finalStudents)}</Text>
-                        {"\n"}
-                        <Text style={styleActions.tag}> Boosted Students: </Text>
-                        <Text style={styleActions.prop}>{"\t\t"}{getRoles(section.boostedStudents)}</Text>
+                        <Text style={styleActions.prop}>{"\t\t"}{getCompanyName(section.company)}</Text>
                         {"\n"}
                         <Text style={styleActions.tag}> Promotor: </Text>
-                        <Text style={styleActions.prop}>{"\t\t"}{section.promotor}</Text>
+                        <Text style={styleActions.prop}>{"\t\t"}{getPromotor(section.promotor)}</Text>
                         {"\n"}
                         <Text style={styleActions.tag}> PDF?: </Text>
                         <Text style={styleActions.prop}>{"\t\t"}{booleanToStringYet(section.hasPDF)}</Text>

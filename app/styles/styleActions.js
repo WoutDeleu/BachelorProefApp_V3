@@ -42,7 +42,6 @@ const styleActions = StyleSheet.create({
         backgroundColor: '#D3D3D3',
     },
     inactive: {
-        backgroundColor: '#ffffffff',
     },
     selectors: {
         marginBottom: 10,
@@ -78,7 +77,8 @@ const styleActions = StyleSheet.create({
     },
     tag:{
         fontSize:15,
-        fontFamily: "Roboto"
+        fontFamily: "Roboto",
+        fontWeight: "bold"
     },
     navigator:{
 

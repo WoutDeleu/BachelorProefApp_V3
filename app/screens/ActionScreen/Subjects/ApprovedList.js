@@ -20,6 +20,10 @@ import styleLoginLogout from "../../../styles/styleLoginLogout";
 import styleActions from "../../../styles/styleActions";
 import getRoles from "../../../functions/getRoles";
 import booleanToString from "../../../functions/booleanToString";
+import getCompanyName from "../../../functions/getCompanyName";
+import getFinalStudents from "../../../functions/getFinalStudents";
+import getPromotor from "../../../functions/getPromotor";
+import getBoosted from "../../../functions/getBoosted";
 
 function booleanToStringYet(hasPDF) {
     if(hasPDF) return "Not present";
@@ -29,7 +33,7 @@ function booleanToStringYet(hasPDF) {
 function ApprovedList() {
     const [activeSections, setActiveSections] = useState([]);
     const [content, setContent] = useState([]);
-    const multipleSelect = false;
+    const multipleSelect = true;
 
     React.useEffect(()=> {
         const constructor = async () => {
@@ -94,16 +98,16 @@ function ApprovedList() {
                         <Text style={styleActions.prop}>{"\t\t"}{section.nrOfStudents}</Text>
                         {"\n"}
                         <Text style={styleActions.tag}> Company: </Text>
-                        <Text style={styleActions.prop}>{"\t\t"}{section.company}</Text>
+                        <Text style={styleActions.prop}>{"\t\t"}{getCompanyName(section.company)}</Text>
                         {"\n"}
                         <Text style={styleActions.tag}> Final Students: </Text>
-                        <Text style={styleActions.prop}>{"\t\t"}{getRoles(section.finalStudents)}</Text>
+                        <Text style={styleActions.prop}>{"\t\t"}{getFinalStudents(section.finalStudents)}</Text>
                         {"\n"}
                         <Text style={styleActions.tag}> Boosted Students: </Text>
-                        <Text style={styleActions.prop}>{"\t\t"}{getRoles(section.boostedStudents)}</Text>
+                        <Text style={styleActions.prop}>{"\t\t"}{getBoosted(section.boostedStudents)}</Text>
                         {"\n"}
                         <Text style={styleActions.tag}> Promotor: </Text>
-                        <Text style={styleActions.prop}>{"\t\t"}{section.promotor}</Text>
+                        <Text style={styleActions.prop}>{"\t\t"}{getPromotor(section.promotor)}</Text>
                         {"\n"}
                         <Text style={styleActions.tag}> PDF?: </Text>
                         <Text style={styleActions.prop}>{"\t\t"}{booleanToStringYet(section.hasPDF)}</Text>

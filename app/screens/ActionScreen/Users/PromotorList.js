@@ -19,6 +19,7 @@ import axios from "axios";
 import styleLoginLogout from "../../../styles/styleLoginLogout";
 import styleActions from "../../../styles/styleActions";
 import getRoles from "../../../functions/getRoles";
+import getCompanyName from "../../../functions/getCompanyName";
 
 function PromotorList() {
     const [activeSections, setActiveSections] = useState([]);
@@ -87,7 +88,7 @@ function PromotorList() {
                     <Text style={styleActions.prop}>{"\t\t"}{getRoles(section.roles)}</Text>
                     {"\n"}
                     <Text style={styleActions.tag}> Company: </Text>
-                    <Text style={styleActions.prop}>{"\t\t"}{section.companyName}</Text>
+                    <Text style={styleActions.prop}>{"\t\t"}{getCompanyName(section.companyName)}</Text>
                 </Animatable.Text>
             </Animatable.View>
         );

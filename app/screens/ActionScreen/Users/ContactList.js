@@ -19,11 +19,13 @@ import axios from "axios";
 import styleLoginLogout from "../../../styles/styleLoginLogout";
 import styleActions from "../../../styles/styleActions";
 import getRoles from "../../../functions/getRoles";
+import getCompanyName from "../../../functions/getCompanyName";
+
 
 function ContactList() {
     const [activeSections, setActiveSections] = useState([]);
     const [content, setContent] = useState([]);
-    const multipleSelect = false;
+    const multipleSelect = true;
 
     React.useEffect(()=> {
         const constructor = async () => {
@@ -87,7 +89,7 @@ function ContactList() {
                     <Text style={styleActions.prop}>{"\t\t"}{getRoles(section.roles)}</Text>
                     {"\n"}
                     <Text style={styleActions.tag}> Company: </Text>
-                    <Text style={styleActions.prop}>{"\t\t"}{section.companyName}</Text>
+                    <Text style={styleActions.prop}>{"\t\t"}{getCompanyName(section.companyName)}</Text>
                     {/*/!*{"\n"}*!/*/}
                     {/*<Text style={styleActions.tag}> Target Audience: </Text>*/}
                     {/*<Text style={styleActions.prop}>{"\t\t"}{getRoles(section.targetAudience)}</Text>*/}

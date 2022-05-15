@@ -20,6 +20,7 @@ import styleLoginLogout from "../../../styles/styleLoginLogout";
 import styleActions from "../../../styles/styleActions";
 import getRoles from "../../../functions/getRoles";
 import booleanToString from "../../../functions/booleanToString";
+import getFinalStudents from "../../../functions/getFinalStudents";
 
 function NonApprovedList() {
     const [activeSections, setActiveSections] = useState([]);
@@ -92,10 +93,7 @@ function NonApprovedList() {
                         <Text style={styleActions.prop}>{"\t\t"}{section.description}</Text>
                         {"\n"}
                         <Text style={styleActions.tag}> Contacts: </Text>
-                        <Text style={styleActions.prop}>{"\t\t"}{getRoles(section.contacts)}</Text>
-                        {"\n"}
-                        <Text style={styleActions.tag}> Approved: </Text>
-                        <Text style={styleActions.prop}>{"\t\t"}{booleanToString(section.approved)}</Text>
+                        <Text style={styleActions.prop}>{"\t\t"}{getFinalStudents(section.contacts)}</Text>
                     </Animatable.Text>
                 </Animatable.View>
             );

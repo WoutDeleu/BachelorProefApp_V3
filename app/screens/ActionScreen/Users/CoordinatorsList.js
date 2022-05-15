@@ -23,7 +23,7 @@ import getRoles from "../../../functions/getRoles";
 function CoordinatorsList() {
     const [activeSections, setActiveSections] = useState([]);
     const [content, setContent] = useState([]);
-    const multipleSelect = false;
+    const multipleSelect = true;
 
     React.useEffect(()=> {
         const constructor = async () => {
