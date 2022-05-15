@@ -56,11 +56,11 @@ const Hart = ({subject}) => {
         setLiked((isLiked) => !isLiked)
         if(liked) {
             console.log("verwijderen uit favorieten");
-            removeFromFavorites(subject,ownId, token);
+            removeFromFavorites(subject, token);
         }
         else {
             console.log("toevoegen aan favorieten");
-            addToFavorites(subject,ownId,token);
+            addToFavorites(subject,token);
         }
     }
     // console.log(favourite)

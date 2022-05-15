@@ -1,14 +1,18 @@
 import removeFirstAndLast from "../../removeFirstAndLast";
 import backendURL from "../../../backendURL";
+import getFromStore from "../../getFromStore";
 
 
-const addToFavorites = async (subject,ownId,token) => {
+const addToFavorites = async (subject,token) => {
+    let ownId2 = await getFromStore("ownId");
+    ownId2 = removeFirstAndLast(ownId2)
     let axios = require('axios');
     let qs = require('qs');
     let data = qs.stringify({
-        'userId': ownId,
+        'userId': ownId2,
         'subjectId': subject.id,
     });
+    console.log(data)
     let config = {
         method: 'post',
         url: backendURL + '/userManagement/users/student/addFavouriteSubject',

@@ -8,7 +8,7 @@ async function logOut() {
         await SecureStore.deleteItemAsync("access_token_expired");
         await SecureStore.deleteItemAsync("refresh_token_expired");
         await SecureStore.deleteItemAsync("role");
-        // await SecureStore.deleteItemAsync("ownId");
+        await SecureStore.deleteItemAsync("ownId");
         await SecureStore.deleteItemAsync("userInfo")
         console.log("Uitgelogd");
         await reloadApp();

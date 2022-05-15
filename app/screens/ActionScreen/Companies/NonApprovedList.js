@@ -73,17 +73,17 @@ function NonApprovedList() {
         }
     }
     const DeleteButton = (company) => {
-        /*if(company.approved)*/ return null;
-        // else {
-        //     return(
-        //         <Button
-        //             style={{marginTop: 10}}
-        //             title="Approve"
-        //             color="red"
-        //             onPress={() => approveCompany(company.company.id)}
-        //         />
-        //     )
-        // }
+        if(company.approved) return null;
+        else {
+            return(
+                <Button
+                    style={{marginTop: 10}}
+                    title="Approve"
+                    color="red"
+                    onPress={() => approveCompany(company.company.id)}
+                />
+            )
+        }
     }
 
     const setSections = (sections) => {

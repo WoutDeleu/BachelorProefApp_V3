@@ -13,28 +13,52 @@ import Pdf from "./SubjectElements/Pdf";
 const Subject = ({subject}) => {
     // console.log(subject.id)
     // console.log(subject.name)
-    return(
-        <View style={styleSubjectList.subjectTotalBlock}>
-            <Hart subject={subject}/>
-            <Pdf subject={subject}/>
-            <Text style={styleSubjectList.students}>
-                Students: {subject.nrOfStudents}
-            </Text>
-            <Text style ={styleSubjectList.title}>
-                {subject.name}
-            </Text>
-            <ReadMore
-                numberOfLines={3}
-                renderTruncatedFooter={_renderTruncatedFooter}
-                renderRevealedFooter={_renderRevealedFooter}
-                onReady={_handleTextReady}>
-                <Text style={styleSubjectList.shortDescription}>
-                    {subject.description}
+    if(subject.company !== null) {
+        return(
+            <View style={styleSubjectList.subjectTotalBlock}>
+                <Hart subject={subject}/>
+                <Pdf subject={subject}/>
+                <Text style={styleSubjectList.students}>
+                    Students: {subject.nrOfStudents}
                 </Text>
-            </ReadMore>
-            {/*<Company subject={subject}/>*/}
-        </View>
-    );
+                <Text style ={styleSubjectList.title}>
+                    {subject.name}
+                </Text>
+                <ReadMore
+                    numberOfLines={3}
+                    renderTruncatedFooter={_renderTruncatedFooter}
+                    renderRevealedFooter={_renderRevealedFooter}
+                    onReady={_handleTextReady}>
+                    <Text style={styleSubjectList.shortDescription}>
+                        {subject.description}
+                    </Text>
+                </ReadMore>
+                <Company subject={subject}/>
+            </View>
+        );
+    }
+    else {
+        return(
+            <View style={styleSubjectList.subjectTotalBlock}>
+                <Hart subject={subject}/>
+                <Pdf subject={subject}/>
+                <Text style={styleSubjectList.students}>
+                    Students: {subject.nrOfStudents}
+                </Text>
+                <Text style ={styleSubjectList.title}>
+                    {subject.name}
+                </Text>
+                <ReadMore
+                    numberOfLines={3}
+                    renderTruncatedFooter={_renderTruncatedFooter}
+                    renderRevealedFooter={_renderRevealedFooter}
+                    onReady={_handleTextReady}>
+                    <Text style={styleSubjectList.shortDescription}>
+                        {subject.description}
+                    </Text>
+                </ReadMore>
+            </View>
+    )}
 };
 
 export default Subject;
