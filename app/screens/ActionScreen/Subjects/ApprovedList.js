@@ -21,7 +21,12 @@ import styleActions from "../../../styles/styleActions";
 import getRoles from "../../../functions/getRoles";
 import booleanToString from "../../../functions/booleanToString";
 
-function NonApprovedList() {
+function booleanToStringYet(hasPDF) {
+    if(hasPDF) return "Not present";
+    else return "Present";
+}
+
+function ApprovedList() {
     const [activeSections, setActiveSections] = useState([]);
     const [content, setContent] = useState([]);
     const multipleSelect = false;
@@ -34,7 +39,7 @@ function NonApprovedList() {
 
             let config = {
                 method: 'get',
-                url: backendURL + '/userManagement/company',
+                url: backendURL + '/subjectManagement/subjects',
                 headers: {
                     'Authorization': 'Bearer ' + JSON.parse(token)
                 }
@@ -58,7 +63,7 @@ function NonApprovedList() {
     };
 
     const renderHeader = (section, _, isActive) => {
-        if(!section.approved) {
+        if(section.approved) {
             return (
                 <Animatable.View
                     duration={400}
@@ -74,7 +79,7 @@ function NonApprovedList() {
 
 
     const renderContent = (section, _, isActive) => {
-        if(!section.approved) {
+        if(section.approved) {
             return (
                 <Animatable.View
                     duration={400}
@@ -82,20 +87,26 @@ function NonApprovedList() {
                     transition="backgroundColor"
                 >
                     <Animatable.Text animation={isActive ? 'bounceIn' : undefined}>
-                        <Text style={styleActions.tag}> Address: </Text>
-                        <Text style={styleActions.prop}>{"\t"}{section.address}</Text>
-                        {"\n"}
-                        <Text style={styleActions.tag}> btwNr: </Text>
-                        <Text style={styleActions.prop}>{"\t\t"}{section.btwNr}</Text>
-                        {"\n"}
                         <Text style={styleActions.tag}> Description: </Text>
-                        <Text style={styleActions.prop}>{"\t\t"}{section.description}</Text>
+                        <Text style={styleActions.prop}>{"\t"}{section.description}</Text>
                         {"\n"}
-                        <Text style={styleActions.tag}> Contacts: </Text>
-                        <Text style={styleActions.prop}>{"\t\t"}{getRoles(section.contacts)}</Text>
+                        <Text style={styleActions.tag}> Nr of Students: </Text>
+                        <Text style={styleActions.prop}>{"\t\t"}{section.nrOfStudents}</Text>
                         {"\n"}
-                        <Text style={styleActions.tag}> Approved: </Text>
-                        <Text style={styleActions.prop}>{"\t\t"}{booleanToString(section.approved)}</Text>
+                        <Text style={styleActions.tag}> Company: </Text>
+                        <Text style={styleActions.prop}>{"\t\t"}{section.company}</Text>
+                        {"\n"}
+                        <Text style={styleActions.tag}> Final Students: </Text>
+                        <Text style={styleActions.prop}>{"\t\t"}{getRoles(section.finalStudents)}</Text>
+                        {"\n"}
+                        <Text style={styleActions.tag}> Boosted Students: </Text>
+                        <Text style={styleActions.prop}>{"\t\t"}{getRoles(section.boostedStudents)}</Text>
+                        {"\n"}
+                        <Text style={styleActions.tag}> Promotor: </Text>
+                        <Text style={styleActions.prop}>{"\t\t"}{section.promotor}</Text>
+                        {"\n"}
+                        <Text style={styleActions.tag}> PDF?: </Text>
+                        <Text style={styleActions.prop}>{"\t\t"}{booleanToStringYet(section.hasPDF)}</Text>
                     </Animatable.Text>
                 </Animatable.View>
             );
@@ -123,4 +134,4 @@ function NonApprovedList() {
 
 
 
-export default NonApprovedList;
+export default ApprovedList;

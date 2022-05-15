@@ -82,9 +82,6 @@ function ApprovedList() {
                     transition="backgroundColor"
                 >
                     <Animatable.Text animation={isActive ? 'bounceIn' : undefined}>
-                        <Text style={styleActions.tag}> Name: </Text>
-                        <Text style={styleActions.prop}>{"\t\t"}{section.name}</Text>
-                        {"\n"}
                         <Text style={styleActions.tag}> Address: </Text>
                         <Text style={styleActions.prop}>{"\t"}{section.address}</Text>
                         {"\n"}

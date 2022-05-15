@@ -8,9 +8,11 @@ import AdminList from "./Users/AdminList";
 import PromotorList from "./Users/PromotorList";
 import ContactList from "./Users/ContactList";
 import CompaniesScreen from "./Companies/CompaniesScreen";
-import ApprovedList from "./Companies/ApprovedList";
-import NonApprovedList from "./Companies/NonApprovedList";
-// import SubjectsScreen from "./Subjects/SubjectsScreen";
+import comp_ApprovedList from "./Companies/ApprovedList";
+import comp_NonApprovedList from "./Companies/NonApprovedList";
+import SubjectsScreen from "./Subjects/SubjectsScreen";
+import subj_ApprovedList from "./Subjects/ApprovedList";
+import subj_NonApprovedList from "./Subjects/NonApprovedList";
 
 
 function ActionStack() {
@@ -28,10 +30,13 @@ function ActionStack() {
             <Stack.Screen name= "Contacts" component={ContactList}/>
 
             <Stack.Screen name="Companies" component={CompaniesScreen}/>
-            <Stack.Screen name="ApprComp" component={ApprovedList}/>
-            <Stack.Screen name="NonApprComp" component={NonApprovedList}/>
+            <Stack.Screen name="comp_ApprComp" component={comp_ApprovedList}/>
+            <Stack.Screen name="comp_NonApprComp" component={comp_NonApprovedList}/>
 
-            {/*<Stack.Screen name="SubjectsScreen" component={SubjectsScreen}/>*/}
+            <Stack.Screen name="Subjects" component={SubjectsScreen}/>
+            <Stack.Screen name="subj_ApprComp" component={subj_ApprovedList}/>
+            <Stack.Screen name="subj_NonApprComp" component={subj_NonApprovedList}/>
+
         </Stack.Navigator>
     );
 
