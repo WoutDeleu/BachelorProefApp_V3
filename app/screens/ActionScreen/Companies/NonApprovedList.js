@@ -1,11 +1,11 @@
-import React, {Component, useState} from 'react';
+import React, {Component, useContext, useState} from 'react';
 import {
     Switch,
     ScrollView,
     StyleSheet,
     Text,
     View,
-    TouchableOpacity,
+    TouchableOpacity, Button,
 } from 'react-native';
 import Constants from 'expo-constants';
 import * as Animatable from 'react-native-animatable';
@@ -21,11 +21,16 @@ import styleActions from "../../../styles/styleActions";
 import getRoles from "../../../functions/getRoles";
 import booleanToString from "../../../functions/booleanToString";
 import getFinalStudents from "../../../functions/getFinalStudents";
+import {Alert} from "native-base";
+import approveCompany from "../../../functions/approveCompany";
+import {AuthContext} from "../../../Authentication/AuthProvider";
+
 
 function NonApprovedList() {
     const [activeSections, setActiveSections] = useState([]);
     const [content, setContent] = useState([]);
     const multipleSelect = false;
+    const {userInfo} = useContext(AuthContext)
 
     React.useEffect(()=> {
         const constructor = async () => {
@@ -37,7 +42,7 @@ function NonApprovedList() {
                 method: 'get',
                 url: backendURL + '/userManagement/company',
                 headers: {
-                    'Authorization': 'Bearer ' + JSON.parse(token)
+                    'Authorization': 'Bearer ' + JSON.parse(token),
                 }
             };
 
@@ -53,6 +58,33 @@ function NonApprovedList() {
         }
         constructor();
     },[])
+
+    const ApproveButton = (company) => {
+        if(company.approved) return null;
+        else {
+            return(
+                <Button
+                    style={{marginBottom: 10}}
+                    title="Approve"
+                    color="#228B22"
+                    onPress={() => approveCompany(company.company.id)}
+                />
+            )
+        }
+    }
+    const DeleteButton = (company) => {
+        /*if(company.approved)*/ return null;
+        // else {
+        //     return(
+        //         <Button
+        //             style={{marginTop: 10}}
+        //             title="Approve"
+        //             color="red"
+        //             onPress={() => approveCompany(company.company.id)}
+        //         />
+        //     )
+        // }
+    }
 
     const setSections = (sections) => {
         setActiveSections(sections.includes(undefined) ? [] : sections)
@@ -95,6 +127,8 @@ function NonApprovedList() {
                         <Text style={styleActions.tag}> Contacts: </Text>
                         <Text style={styleActions.prop}>{"\t\t"}{getFinalStudents(section.contacts)}</Text>
                     </Animatable.Text>
+                    {/*<ApproveButton company={section}/>*/}
+                    {/*<DeleteButton company={section}/>*/}
                 </Animatable.View>
             );
         }

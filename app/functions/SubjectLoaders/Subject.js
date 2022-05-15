@@ -32,7 +32,7 @@ const Subject = ({subject}) => {
                     {subject.description}
                 </Text>
             </ReadMore>
-            <Company subject={subject}/>
+            {/*<Company subject={subject}/>*/}
         </View>
     );
 };
