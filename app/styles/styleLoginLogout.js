@@ -63,6 +63,12 @@ const styleLoginLogout =  StyleSheet.create({
         fontStyle: 'italic',
         fontSize:18,
     },
+    propEmail:{
+        position: 'absolute',
+        left: 135,
+        fontStyle: 'italic',
+        fontSize:14,
+    },
     viewLine: {
         borderBottomColor: "black",
         borderBottomWidth: StyleSheet.hairlineWidth,

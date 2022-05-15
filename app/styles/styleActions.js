@@ -5,6 +5,17 @@ const styleActions = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#ffffffff',
+        alignContent: "center",
+        alignItems: "center",
+        justifyContent:"center",
+        paddingTop: Constants.statusBarHeight,
+    },
+    containerGlobal: {
+        flex: 1,
+        backgroundColor: '#ffffffff',
+        alignContent: "center",
+        alignItems: "center",
+        justifyContent:"center",
         paddingTop: Constants.statusBarHeight,
     },
     title: {
@@ -70,6 +81,9 @@ const styleActions = StyleSheet.create({
         fontSize:15,
         fontFamily: "Roboto"
     },
+    //
+
+
 });
 
 export default styleActions;

@@ -10,6 +10,7 @@ import removeFirstAndLast from "../functions/removeFirstAndLast";
 
 import Spinner from "react-native-loading-spinner-overlay";
 import {AuthContext} from "../Authentication/AuthProvider";
+import axios from "axios";
 
 
 function SettingsScreen() {
@@ -28,22 +29,21 @@ function SettingsScreen() {
     const roles_names = [];
 
     React.useEffect(()=> {
-        const constructor = async () => {
+        const basics = async () => {
             await refreshToken();
             let token = await getAccessToken();
             let id = await getFromStore("ownId");
             id = removeFirstAndLast(id)
 
             const axios = require('axios');
-            const config = {
+            let config = {
                 method: 'get',
                 url: backendURL + '/userManagement/users/' + id,
                 headers: {
                     'Authorization': 'Bearer ' + JSON.parse(token)
                 }
             };
-
-            axios(config)
+            await axios(config)
                 .then(function (response) {
                     // console.log(JSON.stringify(response.data));
                     setLastName(response.data.lastName);
@@ -51,26 +51,42 @@ function SettingsScreen() {
                     setEmail(response.data.email);
                     setPhone(response.data.telNr)
                     setRoles(response.data.roles)
-                    setFavoriteSubjects(response.data.favouriteSubjects)
                     setRoles(response.data.roles)
                     setPrefferedSubjects(response.data.preferredSubjects)
                     setTargetAudience(response.data.targetAudience)
-                    for(let i =0; i<response.data.roles.length; i++) {
+                    for (let i = 0; i < response.data.roles.length; i++) {
                         roles_names.push(response.data.roles[i].name);
                     }
-                    let stringRoles="";
-                    for(let i = 0; i<response.data.roles.length; i++) {
-                        if(i===0) stringRoles = response.data.roles[i].name;
+                    let stringRoles = "";
+                    for (let i = 0; i < response.data.roles.length; i++) {
+                        if (i === 0) stringRoles = response.data.roles[i].name;
                         else stringRoles = stringRoles + ", \n" + response.data.roles[i].name;
-                        if(i===response.data.roles.length-1) setStringRoles(stringRoles)
+                        if (i === response.data.roles.length - 1) setStringRoles(stringRoles)
                     }
-
-                })
-                .catch(function (error) {
+                }).catch(function (error) {
                     console.log(error);
                 });
         }
-        constructor();
+        const getFavorites = async () => {
+            await refreshToken();
+            let token = await getAccessToken();
+            let id = await getFromStore("ownId");
+            id = removeFirstAndLast(id)
+            let config = {
+                method: 'get',
+                url: backendURL + '/userManagement/users/' + id + '/favouriteSubjects',
+                headers: {
+                    'Authorization': 'Bearer ' + JSON.parse(token)
+                }
+            }
+            axios(config)
+                .then(function (response) {
+                    console.log(response.data)
+                    setFavoriteSubjects(response.data)
+                })
+        }
+
+        basics(); getFavorites();
     },[])
 
     const joinedRoles = () => {
@@ -104,7 +120,7 @@ function SettingsScreen() {
 
             <View style={styleLoginLogout.infoLine}>
                 <Text style={styleLoginLogout.tag}>{"\t\t"} Email: </Text>
-                <Text style={styleLoginLogout.prop}>{email}</Text>
+                <Text style={styleLoginLogout.propEmail}>{email}</Text>
             </View>
 
             <View style = {styleLoginLogout.viewLine}/>

@@ -11,17 +11,16 @@ import Constants from 'expo-constants';
 import * as Animatable from 'react-native-animatable';
 import Collapsible from 'react-native-collapsible';
 import Accordion from 'react-native-collapsible/Accordion';
-import refreshToken from "../../functions/refreshToken";
-import getAccessToken from "../../functions/getAccessToken";
-import getFromStore from "../../functions/getFromStore";
-import backendURL from "../../backendURL";
+import refreshToken from "../../../functions/refreshToken";
+import getAccessToken from "../../../functions/getAccessToken";
+import getFromStore from "../../../functions/getFromStore";
+import backendURL from "../../../backendURL";
 import axios from "axios";
-import styleLoginLogout from "../../styles/styleLoginLogout";
-import styleActions from "../../styles/styleActions";
-import getRoles from "../../functions/getRoles";
+import styleLoginLogout from "../../../styles/styleLoginLogout";
+import styleActions from "../../../styles/styleActions";
+import getRoles from "../../../functions/getRoles";
 
-
-function StudentList() {
+function CoordinatorsList() {
     const [activeSections, setActiveSections] = useState([]);
     const [content, setContent] = useState([]);
     const multipleSelect = false;
@@ -34,7 +33,7 @@ function StudentList() {
 
             let config = {
                 method: 'get',
-                url: backendURL + '/userManagement/users/student',
+                url: backendURL + '/userManagement/users/administrator',
                 headers: {
                     'Authorization': 'Bearer ' + JSON.parse(token)
                 }
@@ -86,12 +85,12 @@ function StudentList() {
                     {"\n"}
                     <Text style={styleActions.tag}> Roles: </Text>
                     <Text style={styleActions.prop}>{"\t\t"}{getRoles(section.roles)}</Text>
-                    {"\n"}
-                    <Text style={styleActions.tag}> Favorites: </Text>
-                    <Text style={styleActions.prop}>{"\t\t"}{section.favouriteSubjects.length}</Text>
-                    {"\n"}
-                    <Text style={styleActions.tag}> Target Audience: </Text>
-                    <Text style={styleActions.prop}>{"\t\t"}{getRoles(section.targetAudience)}</Text>
+                    {/*{"\n"}*/}
+                    {/*<Text style={styleActions.tag}> Favorites: </Text>*/}
+                    {/*<Text style={styleActions.prop}>{"\t\t"}{section.favouriteSubjects.length}</Text>*/}
+                    {/*/!*{"\n"}*!/*/}
+                    {/*<Text style={styleActions.tag}> Target Audience: </Text>*/}
+                    {/*<Text style={styleActions.prop}>{"\t\t"}{getRoles(section.targetAudience)}</Text>*/}
                 </Animatable.Text>
             </Animatable.View>
         );
@@ -117,4 +116,4 @@ function StudentList() {
 
 
 
-export default StudentList;
+export default CoordinatorsList;

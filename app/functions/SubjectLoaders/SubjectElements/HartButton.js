@@ -23,33 +23,30 @@ const Hart = ({subject}) => {
     const favouriteId = [];
 
     React.useEffect(()=> {
-        const constructor = async () => {
+        const getFavorites = async () => {
             await refreshToken();
-
-            let token = await getAccessToken();
-            setToken(token);
             let id = await getFromStore("ownId");
             id = removeFirstAndLast(id)
-            setOwnId(id)
-
-            const axios = require('axios');
-            const config = {
+            let token = await getAccessToken();
+            let config = {
                 method: 'get',
-                url: backendURL + '/userManagement/users/' + id,
+                url: backendURL + '/userManagement/users/' + id + '/favouriteSubjects',
                 headers: {
                     'Authorization': 'Bearer ' + JSON.parse(token)
                 }
-            };
-
+            }
             axios(config)
                 .then(function (response) {
-                    // setFavourite(response.data.favouriteSubjects)
-                    for(let i = 0; i<response.data.favouriteSubjects.length; i++) {
-                        if(response.data.favouriteSubjects[i].id === subject.id) setLiked(true)
+                    console.log(response.data)
+                    for(let i = 0; i<response.data.length; i++) {
+                        if(response.data[i].id === subject.id) setLiked(true)
                     }
                 })
+                .catch(function (error) {
+                    console.log(error );
+                });
         }
-        constructor().then(() => {
+        getFavorites().then(() => {
             setHasloaded(true);
         }).catch(e=>console.log(e));
     },[])

@@ -10,6 +10,8 @@ import {AuthContext} from "../Authentication/AuthProvider";
 import SplashScreen from "../screens/SplashScreen";
 // import getIsLoggedIn from "../functions/getIsLoggedIn";
 import tokenIsNotExpired from "../functions/tokenIsNotExpired";
+import refreshToken from "../functions/refreshToken";
+import getAccessToken from "../functions/getAccessToken";
 
 
 const AuthStack = () => {
@@ -17,6 +19,13 @@ const AuthStack = () => {
     const [isSignedIn, setSignedIn] = useState();
     const [loading, setLoading] = useState();
     const { userInfo, splashLoading } = useContext(AuthContext);
+
+    React.useEffect(()=> {
+        const constructor = async () => {
+            // await refreshToken();
+        }
+        constructor();
+    },[])
 
     return (
         <AuthStack.Navigator>
@@ -27,7 +36,7 @@ const AuthStack = () => {
                     options={{headerShown: false}}
                 />
             ):
-            userInfo.access_token /*&& tokenIsNotExpired(expTime_at, expTime_rt)*/ ? (
+            userInfo.access_token ? (
                 <AuthStack.Screen name="Tabs" component={Tabs} options={{headerShown: false}}/>
             ) : (
                 <>

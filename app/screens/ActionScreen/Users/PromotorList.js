@@ -11,22 +11,16 @@ import Constants from 'expo-constants';
 import * as Animatable from 'react-native-animatable';
 import Collapsible from 'react-native-collapsible';
 import Accordion from 'react-native-collapsible/Accordion';
-import refreshToken from "../../functions/refreshToken";
-import getAccessToken from "../../functions/getAccessToken";
-import getFromStore from "../../functions/getFromStore";
-import backendURL from "../../backendURL";
+import refreshToken from "../../../functions/refreshToken";
+import getAccessToken from "../../../functions/getAccessToken";
+import getFromStore from "../../../functions/getFromStore";
+import backendURL from "../../../backendURL";
 import axios from "axios";
-import styleLoginLogout from "../../styles/styleLoginLogout";
-import styleActions from "../../styles/styleActions";
-import getRoles from "../../functions/getRoles";
+import styleLoginLogout from "../../../styles/styleLoginLogout";
+import styleActions from "../../../styles/styleActions";
+import getRoles from "../../../functions/getRoles";
 
-const BACON_IPSUM =
-    'Bacon ipsum dolor amet chuck turducken landjaeger tongue spare ribs. Picanha beef prosciutto meatball turkey shoulder shank salami cupim doner jowl pork belly cow. Chicken shankle rump swine tail frankfurter meatloaf ground round flank ham hock tongue shank andouille boudin brisket. ';
-
-
-
-
-function CoordinatorsList() {
+function PromotorList() {
     const [activeSections, setActiveSections] = useState([]);
     const [content, setContent] = useState([]);
     const multipleSelect = false;
@@ -39,7 +33,7 @@ function CoordinatorsList() {
 
             let config = {
                 method: 'get',
-                url: backendURL + '/userManagement/users/coordinator',
+                url: backendURL + '/userManagement/users/promotor',
                 headers: {
                     'Authorization': 'Bearer ' + JSON.parse(token)
                 }
@@ -92,11 +86,8 @@ function CoordinatorsList() {
                     <Text style={styleActions.tag}> Roles: </Text>
                     <Text style={styleActions.prop}>{"\t\t"}{getRoles(section.roles)}</Text>
                     {"\n"}
-                    <Text style={styleActions.tag}> Favorites: </Text>
-                    <Text style={styleActions.prop}>{"\t\t"}{section.favouriteSubjects.length}</Text>
-                    {"\n"}
-                    <Text style={styleActions.tag}> Target Audience: </Text>
-                    <Text style={styleActions.prop}>{"\t\t"}{getRoles(section.targetAudience)}</Text>
+                    <Text style={styleActions.tag}> Company: </Text>
+                    <Text style={styleActions.prop}>{"\t\t"}{section.companyName}</Text>
                 </Animatable.Text>
             </Animatable.View>
         );
@@ -122,4 +113,4 @@ function CoordinatorsList() {
 
 
 
-export default CoordinatorsList;
+export default PromotorList;

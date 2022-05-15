@@ -4,13 +4,11 @@
 import * as React from 'react';
 import {StyleSheet, View} from "react-native";
 import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
-import ActionStack from "../screens/ActionScreen/ActionStack";
 import FavoriteScreen from "../screens/FavoriteScreen";
-import SubjectListScreen from "../screens/SubjectListScreen";
 import SettingsScreen from "../screens/SettingsScreen";
-import {Image} from "react-native-web";
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import SubjectStack from "./SubjectStack";
+import ActionStack from "../screens/ActionScreen/ActionStack";
 
 const Tabs = () => {
     const Tab = createBottomTabNavigator();

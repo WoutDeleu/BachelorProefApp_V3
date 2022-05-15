@@ -20,33 +20,30 @@ const FavoriteSubject = ({subject}) => {
     const [favourite, setFavourite] = useState([]);
     const [isFav, setFav] = useState(false);
     React.useEffect(()=> {
-        const constructor = async () => {
+        const getFavorites = async () => {
             await refreshToken();
-            let token = await getAccessToken();
             let id = await getFromStore("ownId");
             id = removeFirstAndLast(id)
-
-            const axios = require('axios');
-            const config = {
+            let token = await getAccessToken();
+            let config = {
                 method: 'get',
-                url: backendURL + '/userManagement/users/' + id,
+                url: backendURL + '/userManagement/users/' + id + '/favouriteSubjects',
                 headers: {
                     'Authorization': 'Bearer ' + JSON.parse(token)
                 }
-            };
-
+            }
             axios(config)
                 .then(function (response) {
-                    // setFavourite(response.data.favouriteSubjects)
-                    for(let i = 0; i<response.data.favouriteSubjects.length; i++) {
-                        if(response.data.favouriteSubjects[i].id === subject.id) setFav(true)
+                    console.log(response.data)
+                    for(let i = 0; i<response.data.length; i++) {
+                        if(response.data[i].id === subject.id) setFav(true)
                     }
                 })
                 .catch(function (error) {
                     console.log(error );
                 });
         }
-        constructor()
+        getFavorites();
     },[])
 
     if(isFav) {
