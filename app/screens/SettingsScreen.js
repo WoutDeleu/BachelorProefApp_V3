@@ -95,6 +95,18 @@ function SettingsScreen() {
     }
     const stringRolesDef = joinedRoles();
     // if(!hasLoaded) return null;
+    const getName = (name) => {
+        if(name === null) {
+            return(
+                <View style={styleLoginLogout.infoLine}>
+                    <Text style={styleLoginLogout.tag}>{"\t\t"} Name:</Text>
+                    <Text style={styleLoginLogout.prop}>{lastName}</Text>
+                </View>
+            )
+        }
+        else return null;
+    }
+
     return(
         <View style={styleLoginLogout.basicContainer}>
             <Spinner visible={isLoading}/>
@@ -103,10 +115,7 @@ function SettingsScreen() {
                 style={{width: 80, height: 80, borderRadius: 80/ 2}}
             />
 
-            <View style={styleLoginLogout.infoLine}>
-                <Text style={styleLoginLogout.tag}>{"\t\t"} Name:</Text>
-                <Text style={styleLoginLogout.prop}>{lastName}</Text>
-            </View>
+            {getName(firstName)}
 
             <View style = {styleLoginLogout.viewLine}/>
 

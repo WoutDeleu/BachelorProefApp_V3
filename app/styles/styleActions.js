@@ -4,7 +4,6 @@ import Constants from "expo-constants";
 const styleActions = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#ffffffff',
         alignContent: "center",
         alignItems: "center",
         justifyContent:"center",
@@ -81,7 +80,9 @@ const styleActions = StyleSheet.create({
         fontSize:15,
         fontFamily: "Roboto"
     },
-    //
+    navigator:{
+
+    }
 
 
 });

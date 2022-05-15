@@ -20,23 +20,180 @@ function ActionStack() {
 
     return (
         <Stack.Navigator initialRouteName="Home">
-            <Stack.Screen name= "Home" component={ActionScreen} options= {{headerShown: false}}/>
+            <Stack.Screen
+                name= "Home" component={ActionScreen}
+                options={{
+                    title: 'ActionScreen',
+                    headerStyle: {
+                        backgroundColor: '#212521'
+                    },
+                    headerTintColor: 'white',
+                    headerTitleStyle: {
+                        fontWeight: 'bold',
+                        color: '#ffffff',
+                    },
+            }}/>
 
-            <Stack.Screen name= "Users" component={UserScreen}/>
-            <Stack.Screen name= "Students" component={StudentList}/>
-            <Stack.Screen name= "Coordinators" component={CoordinatorsList}/>
-            <Stack.Screen name= "Admin" component={AdminList}/>
-            <Stack.Screen name= "Promotors" component={PromotorList}/>
-            <Stack.Screen name= "Contacts" component={ContactList}/>
 
-            <Stack.Screen name="Companies" component={CompaniesScreen}/>
-            <Stack.Screen name="comp_ApprComp" component={comp_ApprovedList}/>
-            <Stack.Screen name="comp_NonApprComp" component={comp_NonApprovedList}/>
 
-            <Stack.Screen name="Subjects" component={SubjectsScreen}/>
-            <Stack.Screen name="subj_ApprComp" component={subj_ApprovedList}/>
-            <Stack.Screen name="subj_NonApprComp" component={subj_NonApprovedList}/>
+            <Stack.Screen
+                name= "Users" component={UserScreen}
+                options={{
+                    title: 'Users',
+                    headerStyle: {
+                        backgroundColor: '#212521'
+                    },
+                    headerTintColor: 'white',
+                    headerTitleStyle: {
+                        fontWeight: 'bold',
+                        color: '#ffffff',
+                    },
+                }}/>
+            <Stack.Screen
+                name= "Students" component={StudentList}
+                options={{
+                    title: 'Students',
+                    headerStyle: {
+                        backgroundColor: '#212521'
+                    },
+                    headerTintColor: 'white',
+                    headerTitleStyle: {
+                        fontWeight: 'bold',
+                        color: '#ffffff',
+                    },
+                }}/>
+            <Stack.Screen
+                name= "Coordinators" component={CoordinatorsList}options={{
+                title: 'Coordinators',
+                headerStyle: {
+                    backgroundColor: '#212521'
+                },
+                headerTintColor: 'white',
+                headerTitleStyle: {
+                    fontWeight: 'bold',
+                    color: '#ffffff',
+                },
+            }}/>
+            <Stack.Screen
+                name= "Admin" component={AdminList}options={{
+                title: 'Admins',
+                headerStyle: {
+                    backgroundColor: '#212521'
+                },
+                headerTintColor: 'white',
+                headerTitleStyle: {
+                    fontWeight: 'bold',
+                    color: '#ffffff',
+                },
+            }}/>
+            <Stack.Screen
+                name= "Promotors" component={PromotorList}
+                options={{
+                title: 'Promotors',
+                headerStyle: {
+                    backgroundColor: '#212521'
+                },
+                headerTintColor: 'white',
+                headerTitleStyle: {
+                    fontWeight: 'bold',
+                    color: '#ffffff',
+                },
+            }}/>
+            <Stack.Screen
+                name= "Contacts" component={ContactList}
+                options={{
+                title: 'Contacts',
+                headerStyle: {
+                    backgroundColor: '#212521'
+                },
+                headerTintColor: 'white',
+                headerTitleStyle: {
+                    fontWeight: 'bold',
+                    color: '#ffffff',
+                },
+            }}/>
 
+            <Stack.Screen
+                name="Companies" component={CompaniesScreen}
+                options={{
+                    title: 'Companies',
+                    headerStyle: {
+                        backgroundColor: '#212521'
+                    },
+                    headerTintColor: 'white',
+                    headerTitleStyle: {
+                        fontWeight: 'bold',
+                        color: '#ffffff',
+                    },
+                }}/>
+            <Stack.Screen
+                name="comp_ApprComp" component={comp_ApprovedList}
+                options={{
+                    title: 'Approved Companies',
+                    headerStyle: {
+                        backgroundColor: '#212521'
+                    },
+                    headerTintColor: 'white',
+                    headerTitleStyle: {
+                        fontWeight: 'bold',
+                        color: '#ffffff',
+                    },
+                }}/>
+            <Stack.Screen
+                name="comp_NonApprComp" component={comp_NonApprovedList}
+                options={{
+                    title: 'Non Approved Companies',
+                    headerStyle: {
+                        backgroundColor: '#212521'
+                    },
+                    headerTintColor: 'white',
+                    headerTitleStyle: {
+                        fontWeight: 'bold',
+                        color: '#ffffff',
+                    },
+            }}/>
+
+
+
+            <Stack.Screen
+                name="Subjects" component={SubjectsScreen}
+                options={{
+                    title: 'Subjects',
+                    headerStyle: {
+                        backgroundColor: '#212521'
+                    },
+                    headerTintColor: 'white',
+                    headerTitleStyle: {
+                        fontWeight: 'bold',
+                        color: '#ffffff',
+                    },
+                }}/>
+            <Stack.Screen
+                name="subj_ApprComp" component={subj_ApprovedList}
+                options={{
+                    title: 'Approved Subjects',
+                    headerStyle: {
+                        backgroundColor: '#212521'
+                    },
+                    headerTintColor: 'white',
+                    headerTitleStyle: {
+                        fontWeight: 'bold',
+                        color: '#ffffff',
+                    },
+                }}/>
+            <Stack.Screen
+                name="subj_NonApprComp" component={subj_NonApprovedList}
+                options={{
+                    title: 'Approved Subjects',
+                    headerStyle: {
+                        backgroundColor: '#212521'
+                    },
+                    headerTintColor: 'white',
+                    headerTitleStyle: {
+                        fontWeight: 'bold',
+                        color: '#ffffff',
+                    },
+                }}/>
         </Stack.Navigator>
     );
 
