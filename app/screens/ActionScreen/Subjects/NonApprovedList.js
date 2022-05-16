@@ -5,7 +5,7 @@ import {
     StyleSheet,
     Text,
     View,
-    TouchableOpacity,
+    TouchableOpacity, Button,
 } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import Accordion from 'react-native-collapsible/Accordion';
@@ -15,6 +15,8 @@ import backendURL from "../../../backendURL";
 import styleActions from "../../../styles/styleActions";
 import getPromotor from "../../../functions/getPromotor";
 import getCompanyName from "../../../functions/getCompanyName";
+import approveCompany from "../../../functions/approveCompany";
+import approveSubj from "../../../functions/approveSubj";
 
 function booleanToStringYet(hasPDF) {
     if(hasPDF) return "Not present";
@@ -71,6 +73,24 @@ function NonApprovedList() {
         else return null;
     };
 
+    const ApproveButton = (subj) => {
+        if(subj.approved) return null;
+        else {
+            return(
+                <Button
+                    style={{marginBottom: 10}}
+                    title="Approve"
+                    color="#228B22"
+                    onPress={() =>{
+                        console.log(subj.subj.id);
+                        approveSubj(subj.subj.id)
+                    }}
+                />
+            )
+        }
+    }
+
+
 
     const renderContent = (section, _, isActive) => {
         if(!section.approved) {
@@ -96,6 +116,7 @@ function NonApprovedList() {
                         <Text style={styleActions.tag}> PDF?: </Text>
                         <Text style={styleActions.prop}>{"\t\t"}{booleanToStringYet(section.hasPDF)}</Text>
                     </Animatable.Text>
+                    <ApproveButton subj={section}/>
                 </Animatable.View>
             );
         }

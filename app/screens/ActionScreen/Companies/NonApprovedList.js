@@ -60,7 +60,7 @@ function NonApprovedList() {
     },[])
 
     const ApproveButton = (company) => {
-        if(company.approved) return null;
+        if(company.company.approved) return null;
         else {
             return(
                 <Button
