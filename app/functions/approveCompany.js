@@ -6,13 +6,17 @@ import backendURL from "../backendURL";
 import formData from "form-data";
 import qs from "qs";
 import axios from "axios";
+import {AcceptedCompanies} from "./CompaniesContext";
 
 const approveCompany = async (id) => {
+    React.useEffect(()=>{
+        back()
+    })
     await refreshToken();
     let token = await getAccessToken();
     // console.log(backendURL + '/userManagement/company/' + id + '/setApproved');
     // console.log("token" + token);
-
+    const {change} = useContext(AcceptedCompanies)
 
     let axios = require('axios');
     let FormData = require('form-data');
@@ -30,7 +34,7 @@ const approveCompany = async (id) => {
 
     axios(config)
         .then(function (response) {
-            // console.log("hahah");
+            changeHappened();
         })
         .catch(function (error) {
             console.log(error);

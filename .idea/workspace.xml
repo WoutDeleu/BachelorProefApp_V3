@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="20ec68f9-87e4-453a-b36d-f4f38862cd72" name="Changes" comment="Favorite Bug">
-      <change afterPath="$PROJECT_DIR$/app/functions/ContextFavorites.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/functions/approveSubj.js" afterDir="false" />
+    <list default="true" id="20ec68f9-87e4-453a-b36d-f4f38862cd72" name="Changes" comment="Volledige werking">
+      <change afterPath="$PROJECT_DIR$/app/functions/CompaniesContext.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/backendURL.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/backendURL.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/functions/ContextFavorites.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/functions/approveCompany.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/functions/approveCompany.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/screens/ActionScreen/Companies/NonApprovedList.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/screens/ActionScreen/Companies/NonApprovedList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/screens/ActionScreen/Subjects/NonApprovedList.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/screens/ActionScreen/Subjects/NonApprovedList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,14 +106,7 @@
       <workItem from="1652640080440" duration="29000" />
       <workItem from="1652640324103" duration="1256000" />
       <workItem from="1652682660848" duration="8478000" />
-      <workItem from="1652706420050" duration="2873000" />
-    </task>
-    <task id="LOCAL-00001" summary="teset">
-      <created>1649791524619</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1649791524619</updated>
+      <workItem from="1652706420050" duration="6050000" />
     </task>
     <task id="LOCAL-00002" summary="setup">
       <created>1649792666736</created>
@@ -455,7 +444,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652685868452</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="Volledige werking">
+      <created>1652709351671</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1652709351671</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -474,7 +470,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="saveOwnID works" />
     <MESSAGE value="getFrom Store works" />
     <MESSAGE value="Get OwnId fully functional" />
     <MESSAGE value="layout settingscreen" />
@@ -499,7 +494,8 @@
     <MESSAGE value="Poging tot approve Company" />
     <MESSAGE value="Small bugs" />
     <MESSAGE value="Favorite Bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="Favorite Bug" />
+    <MESSAGE value="Volledige werking" />
+    <option name="LAST_COMMIT_MESSAGE" value="Volledige werking" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
