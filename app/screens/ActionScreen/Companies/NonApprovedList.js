@@ -127,7 +127,7 @@ function NonApprovedList() {
                         <Text style={styleActions.tag}> Contacts: </Text>
                         <Text style={styleActions.prop}>{"\t\t"}{getFinalStudents(section.contacts)}</Text>
                     </Animatable.Text>
-                    {/*<ApproveButton company={section}/>*/}
+                    <ApproveButton company={section}/>
                     {/*<DeleteButton company={section}/>*/}
                 </Animatable.View>
             );

@@ -12,7 +12,7 @@ const addToFavorites = async (subject,token) => {
         'userId': ownId2,
         'subjectId': subject.id,
     });
-    console.log(data)
+    console.log('Bearer ' + token)
     let config = {
         method: 'post',
         url: backendURL + '/userManagement/users/student/addFavouriteSubject',
@@ -29,6 +29,7 @@ const addToFavorites = async (subject,token) => {
         .catch(function (error) {
             console.log(error);
         });
+
 }
 
 export default addToFavorites;

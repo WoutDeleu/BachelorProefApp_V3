@@ -38,6 +38,7 @@ const Hart = ({subject}) => {
             axios(config)
                 .then(function (response) {
                     console.log(response.data)
+                    setToken(token);
                     for(let i = 0; i<response.data.length; i++) {
                         if(response.data[i].id === subject.id) setLiked(true)
                     }

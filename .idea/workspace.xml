@@ -3,8 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="20ec68f9-87e4-453a-b36d-f4f38862cd72" name="Changes" comment="Small bugs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/screens/ActionScreen/ActionScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/screens/ActionScreen/ActionScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/screens/ActionScreen/Companies/CompaniesScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/screens/ActionScreen/Companies/CompaniesScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/functions/SubjectLoaders/SubjectElements/HartButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/functions/SubjectLoaders/SubjectElements/HartButton.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/functions/SubjectLoaders/SubjectElements/addToFavorites.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/functions/SubjectLoaders/SubjectElements/addToFavorites.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/functions/approveCompany.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/functions/approveCompany.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/screens/ActionScreen/ActionStack.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/screens/ActionScreen/ActionStack.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/screens/ActionScreen/Companies/NonApprovedList.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/screens/ActionScreen/Companies/NonApprovedList.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,6 +102,10 @@
       <workItem from="1652440074677" duration="17149000" />
       <workItem from="1652510659072" duration="17339000" />
       <workItem from="1652595792136" duration="33831000" />
+      <workItem from="1652639963285" duration="17000" />
+      <workItem from="1652640080440" duration="29000" />
+      <workItem from="1652640324103" duration="1256000" />
+      <workItem from="1652682660848" duration="3163000" />
     </task>
     <task id="LOCAL-00001" summary="teset">
       <created>1649791524619</created>
@@ -429,7 +436,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652639507548</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="Small bugs">
+      <created>1652639970727</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1652639970727</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -510,7 +524,6 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/app/functions/SubjectLoaders/SubjectElements/addToFavorites.js</url>
           <line>24</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>

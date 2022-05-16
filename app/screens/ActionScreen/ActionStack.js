@@ -184,7 +184,7 @@ function ActionStack() {
             <Stack.Screen
                 name="subj_NonApprComp" component={subj_NonApprovedList}
                 options={{
-                    title: 'Approved Subjects',
+                    title: 'Non Approved Subjects',
                     headerStyle: {
                         backgroundColor: '#212521'
                     },
