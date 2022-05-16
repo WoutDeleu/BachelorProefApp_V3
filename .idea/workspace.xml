@@ -2,14 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="20ec68f9-87e4-453a-b36d-f4f38862cd72" name="Changes" comment="Volledige werking">
-      <change afterPath="$PROJECT_DIR$/app/screens/ActionScreen/Users/StatScreen.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my-release-key.keystore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/your_key_name.keystore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.json" beforeDir="false" afterPath="$PROJECT_DIR$/app.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Authentication/AuthProvider.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Authentication/AuthProvider.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/screens/ActionScreen/ActionScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/screens/ActionScreen/ActionScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/screens/ActionScreen/ActionStack.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/screens/ActionScreen/ActionStack.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/screens/ActionScreen/Users/StatScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/screens/ActionScreen/Users/StatScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/screens/SubjectListScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/screens/SubjectListScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/styles/styleSubjectList.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/styles/styleSubjectList.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,13 +106,7 @@
       <workItem from="1652640324103" duration="1256000" />
       <workItem from="1652682660848" duration="8478000" />
       <workItem from="1652706420050" duration="13041000" />
-    </task>
-    <task id="LOCAL-00003" summary="ErrorFix">
-      <created>1649866914844</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1649866914844</updated>
+      <workItem from="1652729651821" duration="619000" />
     </task>
     <task id="LOCAL-00004" summary="ErrorFix">
       <created>1649866927269</created>
@@ -454,7 +444,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652713362587</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="Volledige werking">
+      <created>1652729678742</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1652729678742</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

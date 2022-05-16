@@ -61,13 +61,13 @@ function  SubjectListScreen({navigation}) {
 
     return(
         <View style={styleSubjectList.container}>
-                <TouchableOpacity
-                    // onPress={() => { navigation.navigate('AddSubject') }}
-                    onPress={() => console.log("addSubj")}
-                    style={styleSubjectList.plusbutton}
-                >
-                    <Ionicons name="add-outline" size={30} color="#ffff"/>
-                </TouchableOpacity>
+                {/*<TouchableOpacity*/}
+                {/*    // onPress={() => { navigation.navigate('AddSubject') }}*/}
+                {/*    onPress={() => console.log("addSubj")}*/}
+                {/*    style={styleSubjectList.plusbutton}*/}
+                {/*>*/}
+                {/*    <Ionicons name="add-outline" size={30} color="#ffff"/>*/}
+                {/*</TouchableOpacity>*/}
             <SafeAreaView style={{justifyContent: 'center',}}>
                 <FlatList
                     style={{

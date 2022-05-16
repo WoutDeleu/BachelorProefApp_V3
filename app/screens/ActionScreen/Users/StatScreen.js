@@ -58,7 +58,7 @@ const StatScreen = () => {
         }
         constructor();
     })
-
+    // console.log("tabBarHeight"  + tabBarHeight)
     return (
             <ScrollView style={{marginBottom: tabBarHeight}}>
                 <View style = {styleLoginLogout.viewLine}/>
