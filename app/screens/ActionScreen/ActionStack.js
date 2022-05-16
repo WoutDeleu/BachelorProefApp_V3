@@ -13,6 +13,7 @@ import comp_NonApprovedList from "./Companies/NonApprovedList";
 import SubjectsScreen from "./Subjects/SubjectsScreen";
 import subj_ApprovedList from "./Subjects/ApprovedList";
 import subj_NonApprovedList from "./Subjects/NonApprovedList";
+import StatScreen from "./Users/StatScreen";
 
 
 function ActionStack() {
@@ -103,6 +104,19 @@ function ActionStack() {
                 name= "Contacts" component={ContactList}
                 options={{
                 title: 'Contacts',
+                headerStyle: {
+                    backgroundColor: '#212521'
+                },
+                headerTintColor: 'white',
+                headerTitleStyle: {
+                    fontWeight: 'bold',
+                    color: '#ffffff',
+                },
+            }}/>
+            <Stack.Screen
+                name= "Stats" component={StatScreen}
+                options={{
+                title: 'Stats',
                 headerStyle: {
                     backgroundColor: '#212521'
                 },

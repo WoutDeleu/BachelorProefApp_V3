@@ -74,10 +74,6 @@ export const AuthProvider = ({children}) => {
                         callback: () => Popup.hide()
                     })
                 }
-                else if (!e?.response) {
-                    setErrMsg('No Server Response');
-                    console.log(errMsg);
-                }
                 else {
                     setErrMsg('No Server Response');
                     Popup.show({

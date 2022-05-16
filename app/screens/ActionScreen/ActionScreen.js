@@ -7,6 +7,16 @@ import isRole from "../../functions/isRole";
 import {useContext} from "react";
 import {AuthContext} from "../../Authentication/AuthProvider";
 
+function Stats({navigation}) {
+    const {userInfo} = useContext(AuthContext)
+    if(isRole("ROLE_PROMOTOR", userInfo)) return null;
+    else return (
+        <TouchableOpacity style={styleLoginLogout.loginBtn} onPress={() => navigation.navigate('Stats')}>
+            <Text style={styleLoginLogout.loginText}> STATS </Text>
+        </TouchableOpacity>
+    )    
+}
+
 function  ActionScreen({navigation}) {
     const {userInfo} = useContext(AuthContext)
     if(isRole("ROLE_ADMIN", userInfo) || isRole("ROLE_COORDINATOR", userInfo) || isRole("ROLE_PROMOTOR", userInfo)) {
@@ -21,6 +31,7 @@ function  ActionScreen({navigation}) {
                 <TouchableOpacity style={styleLoginLogout.loginBtn} onPress={() => navigation.navigate('Companies')}>
                     <Text style={styleLoginLogout.loginText}> COMPANIES </Text>
                 </TouchableOpacity>
+                <Stats navigation={navigation}/>
             </View>
         )
     }
